@@ -1,0 +1,3820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A.V. Bhanu Prakash Reddy | Portfolio</title>
+  
+  <!-- Premium Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons for modern minimalist icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <style>
+    /* -------------------------------------------------------------
+       CUSTOM PROPERTIES & AESTHETIC DESIGN SYSTEM (Cyber-Minimalism)
+       ------------------------------------------------------------- */
+    :root {
+      --bg-dark: #05060b;
+      --bg-card: rgba(11, 13, 23, 0.65);
+      --bg-card-hover: rgba(16, 19, 34, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.05);
+      --border-focus: rgba(0, 240, 255, 0.35);
+      
+      --accent-cyan: #00f0ff;
+      --accent-cyan-rgb: 0, 240, 255;
+      --accent-violet: #bc00dd;
+      --accent-violet-rgb: 188, 0, 221;
+      --accent-blue: #3b82f6;
+      --accent-blue-rgb: 59, 130, 246;
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #57657a;
+      
+      --font-display: 'Outfit', sans-serif;
+      --font-accent: 'Syne', sans-serif;
+      --font-base: 'Inter', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      
+      --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.25);
+      --glow-violet: 0 0 20px rgba(188, 0, 221, 0.25);
+    }
+
+    /* -------------------------------------------------------------
+       BASE STYLES & LAYOUT
+       ------------------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-base);
+      overflow-x: hidden;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-cyan);
+      box-shadow: var(--glow-cyan);
+    }
+
+    /* Interactive Background Grid System */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      top: 25%;
+      left: 20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 70%);
+      z-index: -1;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: float-orbs 25s infinite alternate ease-in-out;
+    }
+
+    .ambient-glow-two {
+      position: fixed;
+      bottom: 15%;
+      right: 15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(188, 0, 221, 0.04) 0%, transparent 70%);
+      z-index: -1;
+      filter: blur(85px);
+      pointer-events: none;
+      animation: float-orbs 30s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes float-orbs {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(80px, -40px) scale(1.15); }
+      100% { transform: translate(-50px, 60px) scale(0.9); }
+    }
+
+    /* Outer layout frame container */
+    .app-frame {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      position: relative;
+    }
+
+    /* -------------------------------------------------------------
+       HEADER & NAVIGATION BAR
+       ------------------------------------------------------------- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding: 1rem 1.75rem;
+      background: rgba(11, 13, 23, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-logo i {
+      color: var(--accent-cyan);
+      font-size: 1.35rem;
+      filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px solid rgba(0, 240, 255, 0.15);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-pulse {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-cyan);
+      animation: pulse-ring 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.5; }
+    }
+
+    /* -------------------------------------------------------------
+       BENTO BOX CSS GRID LAYOUT
+       ------------------------------------------------------------- */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: minmax(180px, auto);
+      gap: 1.5rem;
+    }
+
+    /* Base Card Glassmorphism Structure */
+    .bento-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 2.25rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0) 100%);
+      pointer-events: none;
+    }
+
+    /* Card Glow trails tracked in JavaScript */
+    .card-spotlight {
+      position: absolute;
+      inset: -1px;
+      border-radius: 24px;
+      background: radial-gradient(
+        350px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(var(--accent-cyan-rgb), 0.1) 0%,
+        rgba(var(--accent-violet-rgb), 0.05) 50%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-focus);
+      box-shadow: 0 15px 50px rgba(0, 240, 255, 0.05), inset 0 0 15px rgba(255, 255, 255, 0.01);
+    }
+
+    .bento-card:hover .card-spotlight {
+      opacity: 1;
+    }
+
+    /* Content layers inside cards to stay above interactive spot effects */
+    .card-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Header structure inside Bento card */
+    .card-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-label i {
+      color: var(--accent-cyan);
+      font-size: 0.9rem;
+    }
+
+    /* -------------------------------------------------------------
+       SPECIFIC CARD INDIVIDUAL CONFIGURATIONS
+       ------------------------------------------------------------- */
+    
+    /* 1. HERO HEADER/PROFILE CARD (Large 2x2) */
+    .card-hero {
+      grid-column: span 2;
+      grid-row: span 2;
+      min-height: 400px;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.28;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Hero split-layout for core profile picture column */
+    .hero-split-layout {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin-top: auto;
+      height: 100%;
+      width: 100%;
+    }
+
+    .hero-meta-col {
+      flex: 1.4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-profile-pic-col {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Avatar container & rings positioning */
+    .avatar-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-ring-outer {
+      position: absolute;
+      width: 168px;
+      height: 168px;
+      border: 1.5px dashed rgba(0, 240, 255, 0.2);
+      border-radius: 50%;
+      animation: rotate-clockwise 20s linear infinite;
+    }
+
+    .avatar-ring-inner {
+      position: absolute;
+      width: 158px;
+      height: 158px;
+      border: 1.5px solid rgba(188, 0, 221, 0.45);
+      border-radius: 50%;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      animation: rotate-counter-clockwise 10s linear infinite;
+    }
+
+    .avatar-frame {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.9) contrast(1.1);
+    }
+
+    .avatar-status-pill {
+      position: absolute;
+      bottom: -4px;
+      background: rgba(6, 7, 13, 0.9);
+      backdrop-filter: blur(8px);
+      border: 1.2px solid var(--accent-cyan);
+      border-radius: 99px;
+      padding: 4px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-primary);
+      box-shadow: 0 4px 12px rgba(0, 240, 255, 0.25);
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    .avatar-status-pill .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #34d399;
+      animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes rotate-clockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes rotate-counter-clockwise {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    @keyframes pulse-glow {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-split-layout {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        text-align: center;
+        padding: 1rem 0;
+      }
+      .hero-tags {
+        justify-content: center;
+      }
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .bento-card:hover .badge-pill:hover {
+      background: rgba(0, 240, 255, 0.05);
+      border-color: rgba(0, 240, 255, 0.2);
+      color: var(--accent-cyan);
+      transform: scale(1.05);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      background: linear-gradient(135deg, var(--text-primary) 30%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 1rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--accent-cyan);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-decor-line {
+      flex-grow: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0, 240, 255, 0.4), transparent);
+    }
+
+    /* 2. ABOUT ME CARD (1x1) */
+    .card-about {
+      grid-column: span 1;
+    }
+
+    .about-text {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+
+    .about-quote-deco {
+      font-family: var(--font-accent);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 1.25rem;
+      padding-left: 14px;
+      border-left: 3px solid var(--accent-violet);
+    }
+
+    /* 3. LOCATION & TIME CARD (1x1) */
+    .card-location {
+      grid-column: span 1;
+    }
+
+    .location-details {
+      margin-top: 0.5rem;
+    }
+
+    .loc-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .loc-icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(188, 0, 221, 0.06);
+      border: 1px solid rgba(188, 0, 221, 0.2);
+      color: var(--accent-violet);
+      font-size: 1.2rem;
+    }
+
+    .loc-text h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .loc-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Live Clock Styling */
+    .clock-display {
+      margin-top: auto;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .clock-title {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .clock-time {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    /* 4. SKILLS COMPUTER MODULES INTEGRATION (1x2) */
+    .card-skills {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+
+    .skills-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 0.5rem;
+    }
+
+    .skill-row {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      padding: 11px 16px;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid var(--border-subtle);
+      border-left: 3.5px solid var(--accent-cyan);
+      border-radius: 8px; /* Sharp rectangular corners for 'extrand line rectangle' look */
+      cursor: crosshair;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .skill-row:hover {
+      background: rgba(0, 240, 255, 0.03);
+      border-color: rgba(0, 240, 255, 0.25);
+      border-left-color: var(--accent-violet);
+      transform: translateX(5px);
+    }
+
+    .skill-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .skill-row i {
+      font-size: 1.15rem;
+      color: var(--accent-cyan);
+      transition: all 0.25s ease;
+    }
+
+    .skill-row:hover i {
+      color: var(--accent-violet);
+      transform: scale(1.1);
+    }
+
+    .skill-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+    }
+
+    /* 5. PROJECTS SECTION BENTO BOX (2x2 Grid Expansion) */
+    .card-projects {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      height: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .proj-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .proj-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .proj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .proj-tech-badges {
+      display: flex;
+      gap: 6px;
+    }
+
+    .proj-tech-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      background: rgba(0, 240, 255, 0.04);
+      border: 1px solid rgba(0, 240, 255, 0.1);
+      color: var(--accent-cyan);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .proj-tech-badge.violet {
+      background: rgba(188, 0, 221, 0.04);
+      border: 1px solid rgba(188, 0, 221, 0.1);
+      color: var(--accent-violet);
+    }
+
+    .proj-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .proj-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Student UPI App and Parental Tracking Simulator */
+    .safepay-simulator-widget {
+      margin-top: auto;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .safepay-tabs {
+      display: flex;
+      gap: 6px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 8px;
+      margin-bottom: 4px;
+    }
+
+    .safepay-tab-btn {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 6px 0;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .safepay-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+    }
+
+    .safepay-tab-btn.active {
+      background: rgba(0, 240, 255, 0.08);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .safepay-panel {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .safepay-panel.active {
+      display: flex;
+    }
+
+    /* UPI Card view components */
+    .student-balance-card {
+      background: linear-gradient(135deg, #090a10 0%, #111322 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .balance-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .wallet-id {
+      background: rgba(188, 0, 221, 0.08);
+      color: var(--accent-violet);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.55rem;
+    }
+
+    .balance-val {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .limit-progress-box {
+      margin-top: 4px;
+    }
+
+    .limit-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+      font-family: var(--font-mono);
+    }
+
+    .limit-bar-bg {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .limit-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet));
+      width: 45%;
+      transition: width 0.4s ease;
+    }
+
+    .upi-pay-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .upi-input {
+      background: rgba(0, 0, 0, 0.30);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 6px 10px;
+      color: white;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .upi-input:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    .upi-trigger-btn {
+      width: 100%;
+      background: linear-gradient(90deg, rgba(var(--accent-cyan-rgb), 0.15), rgba(var(--accent-violet-rgb), 0.15));
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+      color: #93c5fd;
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .upi-trigger-btn:hover {
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+      background: linear-gradient(90deg, rgba(var(--accent-cyan-rgb), 0.22), rgba(var(--accent-violet-rgb), 0.22));
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    /* Parent Tracking View components */
+    .parent-limit-control {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .limit-setter-label {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .limit-value-display {
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .limit-slider-input {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+      margin: 4px 0;
+    }
+
+    .limit-slider-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+      cursor: pointer;
+    }
+
+    /* GPS Telemetry subpanel */
+    .radar-telemetry-box {
+      border: 1px solid var(--border-subtle);
+      background: #06070d;
+      border-radius: 10px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .radar-outer {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .radar-pulse {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 80%);
+      animation: radar-sweep 2.5s infinite linear;
+    }
+
+    .radar-blip {
+      width: 5px;
+      height: 5px;
+      background-color: var(--accent-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-cyan);
+      z-index: 10;
+    }
+
+    @keyframes radar-sweep {
+      0% { transform: scale(0.2); opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .telemetry-txt {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+    }
+
+    .telemetry-coords {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .telemetry-status {
+      color: #34d399;
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .parent-alert-feed {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      background: rgba(5,6,11,0.6);
+      border: 1px solid rgba(255,255,255,0.02);
+      border-radius: 8px;
+      padding: 6px;
+      max-height: 48px;
+      overflow-y: auto;
+      color: var(--text-muted);
+    }
+
+    .feed-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 2px 0;
+    }
+
+    .feed-item.alert {
+      color: #f87171; /* red-400 */
+    }
+
+    .feed-item.success {
+      color: #34d399; /* emerald-400 */
+    }
+
+    /* Transaction History on Student Panel */
+    .student-history-box {
+      margin-top: 10px;
+      background: rgba(5, 6, 11, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .history-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+      padding-bottom: 4px;
+      margin-bottom: 2px;
+    }
+
+    .student-history-list {
+      max-height: 110px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding-right: 4px;
+    }
+
+    /* Custom smaller scrollbar for list containers */
+    .student-history-list::-webkit-scrollbar,
+    .parent-alert-feed::-webkit-scrollbar {
+      width: 4px;
+    }
+    .student-history-list::-webkit-scrollbar-track,
+    .parent-alert-feed::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .student-history-list::-webkit-scrollbar-thumb,
+    .parent-alert-feed::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+    }
+    .student-history-list::-webkit-scrollbar-thumb:hover,
+    .parent-alert-feed::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-cyan);
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 8px;
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      transition: all 0.2s ease;
+    }
+
+    .history-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .history-item-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    .history-status-icon {
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+    }
+
+    .history-status-icon.success {
+      background: rgba(52, 211, 153, 0.1);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.25);
+    }
+
+    .history-status-icon.decline {
+      background: rgba(248, 113, 113, 0.1);
+      color: #f87171;
+      border: 1px solid rgba(248, 113, 113, 0.25);
+    }
+
+    .history-item-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .history-item-store {
+      color: var(--text-primary);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 120px;
+    }
+
+    .history-item-time {
+      font-size: 0.55rem;
+      color: var(--text-muted);
+    }
+
+    .history-item-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .history-item-price {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .history-item-price.success {
+      color: #34d399;
+    }
+
+    .history-item-price.decline {
+      color: #f87171;
+      text-decoration: line-through;
+      opacity: 0.8;
+    }
+
+    .history-item-msg {
+      font-size: 0.55rem;
+      color: var(--text-muted);
+    }
+
+    /* Dynamic Visual Simulator Calculator layout */
+    .calc-simulator-widget {
+      margin-top: auto;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .calc-sim-screen {
+      background: #090a10;
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 10px;
+      min-height: 40px;
+      text-align: right;
+      font-family: var(--font-mono);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .calc-screen-eq {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      height: 12px;
+    }
+
+    .calc-screen-current {
+      font-size: 1.1rem;
+      color: #00f0ff;
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.35);
+      font-weight: 500;
+    }
+
+    .calc-sim-keypad {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .calc-btn {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 6px 0;
+      cursor: pointer;
+      text-align: center;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+
+    .calc-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .calc-btn.op {
+      color: var(--accent-violet);
+      background: rgba(188, 0, 221, 0.04);
+    }
+
+    .calc-btn.op:hover {
+      background: rgba(188, 0, 221, 0.09);
+      color: #f472b6;
+    }
+
+    .calc-btn.clear {
+      color: #38bdf8;
+    }
+
+    .calc-btn.calc-equals {
+      background: rgba(0, 240, 255, 0.07);
+      border-color: rgba(0, 240, 255, 0.2);
+      color: var(--accent-cyan);
+    }
+
+    .calc-btn.calc-equals:hover {
+      background: rgba(0, 240, 255, 0.15);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+    }
+
+    /* View live button links */
+    .proj-footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1rem;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .proj-footer-link:hover {
+      color: white;
+      transform: translateX(4px);
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+    }
+
+    /* 6. CONTACT CONNECT INFRASTRUCTURE (1x1) */
+    .card-connect {
+      grid-column: span 1;
+    }
+
+    .connect-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Copy button block container */
+    .copy-email-block {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .copy-email-block:hover {
+      border-color: rgba(0, 240, 255, 0.2);
+    }
+
+    .email-display-text {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      user-select: all;
+    }
+
+    .copy-interactive-btn {
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 10px;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .copy-interactive-btn:hover {
+      background: var(--accent-cyan);
+      box-shadow: var(--glow-cyan);
+      color: var(--bg-dark);
+      transform: scale(1.08);
+    }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      height: 42px;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .social-btn:hover {
+      background: rgba(188, 0, 221, 0.05);
+      border-color: rgba(188, 0, 221, 0.25);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .social-btn i {
+      font-size: 1.15rem;
+    }
+
+    /* -------------------------------------------------------------
+       SCIENTIFIC FUTURISTIC TOAST ALERTS & NOTIFICATIONS
+       ------------------------------------------------------------- */
+    #toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .futur-toast {
+      background: rgba(11, 13, 23, 0.95);
+      border-left: 3px solid var(--accent-cyan);
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      padding: 14px 22px;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(14px);
+    }
+
+    .futur-toast.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .toast-icon {
+      color: var(--accent-cyan);
+      font-size: 1.25rem;
+      animation: alert-blink 1.5s infinite step-end;
+    }
+
+    @keyframes alert-blink {
+      50% { opacity: 0.3; }
+    }
+
+    .toast-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .toast-content .sys-tag {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .toast-content .main-msg {
+      font-weight: 500;
+      color: #10b981; /* green-500 */
+    }
+
+    /* -------------------------------------------------------------
+       CUSTOM TRAILING MOUSE CURSOR GLOW
+       ------------------------------------------------------------- */
+    #interactive-pointer {
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 50%;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 99999;
+      transition: width 0.25s, height 0.25s, background-color 0.25s, border-color 0.25s;
+      mix-blend-mode: screen;
+      display: none; /* Hidden on touch devices dynamically */
+    }
+
+    @media (pointer: fine) {
+      #interactive-pointer {
+        display: block;
+      }
+    }
+
+    #interactive-pointer.magnetic {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(0, 240, 255, 0.05);
+      border-color: var(--accent-violet);
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER SECTION
+       ------------------------------------------------------------- */
+    footer {
+      margin-top: 3.5rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-pulse-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--accent-violet);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--accent-violet);
+    }
+
+    /* -------------------------------------------------------------
+       RESPONSIVE DESIGN BREAKPOINTS
+       ------------------------------------------------------------- */
+    
+    /* Medium / Laptop Screens (Bento Grid Columns adjust to 2) */
+    @media (max-width: 1024px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .card-hero {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      
+      .card-about {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .card-location {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .card-skills {
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+
+      .card-projects {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .card-connect {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+
+    /* Futuristic Button Actions & Modal Overlay System */
+    .action-btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 240, 255, 0.06);
+      border: 1px solid rgba(0, 240, 255, 0.18);
+      border-radius: 99px;
+      padding: 6px 14px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.04);
+    }
+    .action-btn-pill:hover {
+      background: var(--accent-cyan);
+      color: var(--bg-dark);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+      transform: translateY(-1px);
+    }
+    .action-btn-pill:active {
+      transform: translateY(1px);
+    }
+
+    /* Futuristic Modal Overlay System */
+    .futur-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(3, 4, 8, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .futur-modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .futur-modal-window {
+      background: #090a12;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 16px;
+      width: 90%;
+      max-width: 520px;
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.15), inset 0 0 15px rgba(188, 0, 221, 0.05);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0.92) translateY(10px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .futur-modal-backdrop.active .futur-modal-window {
+      transform: scale(1) translateY(0);
+    }
+
+    .futur-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .futur-modal-title {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .futur-modal-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s ease;
+    }
+
+    .futur-modal-close:hover {
+      color: var(--accent-violet);
+    }
+
+    .futur-modal-body {
+      padding: 1.5rem;
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    /* Modal Form Inputs */
+    .futur-form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .futur-form-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .futur-form-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-family: var(--font-base);
+      font-size: 0.85rem;
+      transition: all 0.25s ease;
+    }
+
+    .futur-form-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+    }
+    
+    select.futur-form-input {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2394a3b8' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 16px;
+      padding-right: 40px;
+    }
+
+    .futur-form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 1.5rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.06);
+      padding-top: 1.25rem;
+    }
+
+    .futur-btn-primary {
+      background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-cyan) 100%);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+    }
+
+    .futur-btn-primary:hover {
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .futur-btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .futur-btn-secondary:hover {
+      border-color: var(--text-muted);
+      color: var(--text-primary);
+    }
+
+    /* Interactive File Upload Area */
+    .futur-drop-zone {
+      border: 1px dashed var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.01);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .futur-drop-zone.dragover, .futur-drop-zone:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 240, 255, 0.02);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.08);
+    }
+
+    .drop-zone-icon {
+      transition: transform 0.25s ease;
+    }
+
+    .futur-drop-zone:hover .drop-zone-icon {
+      transform: translateY(-2px);
+    }
+
+    .delete-proj-btn {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 6px;
+      color: #ef4444;
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .delete-proj-btn:hover {
+      background: #ef4444;
+      color: #fff;
+      border-color: #ef4444;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.35);
+    }
+
+    /* Tablet/Mobile screens (Bento Grid aligns into single column list) */
+    @media (max-width: 768px) {
+      .app-frame {
+        padding: 1.5rem 1rem;
+      }
+      
+      header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 1rem;
+        align-items: center;
+      }
+      
+      .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 1.2rem;
+      }
+
+      .card-hero, .card-about, .card-location, .card-skills, .card-projects, .card-connect {
+        grid-column: span 1;
+        grid-row: span 1;
+        padding: 1.5rem;
+      }
+
+      .hero-title {
+        font-size: 2.25rem;
+      }
+
+      .hero-tagline {
+        font-size: 1.15rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tracking Custom Cursor Pointer -->
+  <div id="interactive-pointer"></div>
+
+  <!-- Interactive Static Fixed Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+  
+  <!-- Subtle Ambient Glow Floating Backlights -->
+  <div class="ambient-glow"></div>
+  <div class="ambient-glow-two"></div>
+
+  <!-- Main Web Layout Frame Container -->
+  <div class="app-frame" id="top-anchor">
+    
+    <!-- HEADER BAR -->
+    <header>
+      <div class="brand-logo">
+        <i class="ph ph-brackets-angle-curly"></i>
+        <span>BhanuPrakash.dev</span>
+      </div>
+      <div class="status-badge" title="Running continuously on Cloud Sandbox">
+        <div class="status-pulse"></div>
+        <span>System Active // Live</span>
+      </div>
+    </header>
+
+    <!-- BENTO GRID SYSTEM -->
+    <main class="bento-grid">
+
+      <!-- 1. HERO HEADER/PROFILE CARD (Large 2x2) -->
+      <section class="bento-card card-hero">
+        <div class="card-spotlight"></div>
+        <canvas id="hero-canvas"></canvas>
+        <div class="card-content">
+          <div class="card-label" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <i class="ph ph-cpu"></i>
+              <span>Core Profile Initialization // Data Science Mode</span>
+            </div>
+            <button id="btn-edit-profile" class="action-btn-pill" onclick="openProfileEditModal()"><i class="ph ph-pencil-simple"></i> Edit Profile</button>
+          </div>
+          
+          <div class="hero-split-layout">
+            <!-- Left Metadata Column -->
+            <div class="hero-meta-col">
+              <div class="hero-meta">
+                <h1 class="hero-title">A.V. Bhanu Prakash Reddy</h1>
+                
+                <div class="hero-tagline">
+                  <span>Computer Science Engineering (Data Science) & Developer</span>
+                  <div class="hero-decor-line"></div>
+                </div>
+
+                <div class="hero-tags">
+                  <span class="badge-pill"><i class="ph ph-atom"></i> React JS</span>
+                  <span class="badge-pill"><i class="ph ph-terminal-window"></i> Python</span>
+                  <span class="badge-pill"><i class="ph ph-database"></i> SQL</span>
+                  <span class="badge-pill"><i class="ph ph-git-branch"></i> GitHub Copilot</span>
+                  <span class="badge-pill"><i class="ph ph-git-fork"></i> GitHub</span>
+                  <span class="badge-pill"><i class="ph ph-intersect"></i> n8n Automation</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Profile Pic Column -->
+            <div class="hero-profile-pic-col">
+              <div class="avatar-container">
+                <div class="avatar-ring-outer"></div>
+                <div class="avatar-ring-inner"></div>
+                <div class="avatar-frame">
+                  <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100%25' height='100%25'%3E%3Crect width='100' height='100' fill='%23f1f3f7'/%3E%3Cpath d='M35,68 C45,75 55,75 65,68 L60,82 L40,82 Z' fill='%23aaa095'/%3E%3Crect x='44' y='58' width='12' height='18' fill='%23b28b76'/%3E%3Cpath d='M44,58 C48,64 52,64 56,58 Z' fill='%239e7662'/%3E%3Cpath d='M33,35 C33,18 67,18 67,35 C67,48 64,59 50,59 C36,59 33,48 33,35 Z' fill='%23cca28f'/%3E%3Ccircle cx='32' cy='38' r='3.5' fill='%23b28b76'/%3E%3Ccircle cx='68' cy='38' r='3.5' fill='%23b28b76'/%3E%3Cpath d='M31,34 C27,24 40,14 50,14 C60,14 73,24 69,34 C71,29 68,20 50,20 C32,20 29,29 31,34 Z' fill='%2316171a'/%3E%3Cpath d='M31,33 C33,21 40,16 50,16 C60,16 67,21 69,33 C67,26 62,21 50,21 C38,21 33,26 31,33 Z' fill='%232b2d35'/%3E%3Cpath d='M31,31 L33,36 L31,38 Z M69,31 L67,36 L69,38 Z' fill='%2316171a'/%3E%3Cpath d='M40,49 C40,56 45,58 50,58 C55,58 60,56 60,49 C60,51 55,54 50,54 C45,54 40,51 40,49 Z' fill='%23917466' opacity='0.35'/%3E%3Cpath d='M43,49 C47,47 53,47 57,49 C55,48 45,48 43,49 Z' fill='%23222328' opacity='0.75'/%3E%3Cpath d='M36,31 Q41,29 45,31.5' stroke='%2316171a' stroke-width='1.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M64,31 Q59,29 55,31.5' stroke='%2316171a' stroke-width='1.5' stroke-linecap='round' fill='none'/%3E%3Cellipse cx='41' cy='34.5' rx='3' ry='1.8' fill='%23ffffff'/%3E%3Ccircle cx='41' cy='34.5' r='1.5' fill='%23503a35'/%3E%3Ccircle cx='40.5' cy='34' r='0.6' fill='%23ffffff'/%3E%3Cellipse cx='59' cy='34.5' rx='3' ry='1.8' fill='%23ffffff'/%3E%3Ccircle cx='59' cy='34.5' r='1.5' fill='%23503a35'/%3E%3Ccircle cx='58.5' cy='34' r='0.6' fill='%23ffffff'/%3E%3Crect x='36' y='31.5' width='10' height='7' rx='2.3' fill='none' stroke='%2316171a' stroke-width='1.4'/%3E%3Crect x='54' y='31.5' width='10' height='7' rx='2.3' fill='none' stroke='%2316171a' stroke-width='1.4'/%3E%3Cpath d='M46,34 L54,34' stroke='%2316171a' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M36,33 L32,33.5' stroke='%2316171a' stroke-width='1.2'/%3E%3Cpath d='M64,33 L68,33.5' stroke='%2316171a' stroke-width='1.2'/%3E%3Cpath d='M37,33 L41,35' stroke='rgba(118,230,255,0.75)' stroke-width='0.8' stroke-linecap='round'/%3E%3Cpath d='M55,33 L59,35' stroke='rgba(118,230,255,0.75)' stroke-width='0.8' stroke-linecap='round'/%3E%3Cpath d='M48,34 L48,43 C48,45 52,45 52,43' fill='none' stroke='%23b28b76' stroke-width='1.3' stroke-linecap='round'/%3E%3Cpath d='M46,50 H54' stroke='%23b27b68' stroke-width='1.2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M40,70 L50,85 L44,85 Z' fill='%23ccdcd6'/%3E%3Cpath d='M60,70 L50,85 L56,85 Z' fill='%23ccdcd6'/%3E%3Cpath d='M45,72 L50,85 L55,72 Z' fill='%23adc2ba'/%3E%3Ccircle cx='50' cy='82' r='0.6' fill='%23ffffff'/%3E%3Ccircle cx='50' cy='88' r='0.6' fill='%23ffffff'/%3E%3Cpath d='M20,100 L30,73 L42,92 L28,100 Z' fill='%231a1b24'/%3E%3Cpath d='M80,100 L70,73 L58,92 L72,100 Z' fill='%231a1b24'/%3E%3Cpath d='M30,73 L43,92 L50,100 L57,92 L70,73 L50,82 Z' fill='%23272834'/%3E%3Cpath d='M20,100 C20,80 30,71 35,71 L43,92 Z' fill='%231a1b24'/%3E%3Cpath d='M80,100 C80,80 70,71 65,71 L57,92 Z' fill='%231a1b24'/%3E%3C/svg%3E" alt="A.V. Bhanu Prakash Reddy" referrerPolicy="no-referrer">
+                </div>
+                <div class="avatar-status-pill">
+                  <span class="pulse-dot"></span>
+                  <span>1st Year CSE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ABOUT ME CARD (1x1) -->
+      <article class="bento-card card-about">
+        <div class="card-spotlight"></div>
+        <div class="card-content">
+          <div>
+            <div class="card-label" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="ph ph-user-focus"></i>
+                <span>About Me // Bio Overview</span>
+              </div>
+              <button id="btn-edit-about" class="action-btn-pill" onclick="openAboutEditModal()"><i class="ph ph-pencil-simple"></i> Edit About</button>
+            </div>
+            <p class="about-text" id="display-about-p1">
+              First-year CSE undergraduate specializing in Data Science at Aurora Deemed University.
+            </p>
+            <p class="about-text" style="margin-top: 0.75rem;" id="display-about-p2">
+              I blend modern web technologies with data analytics and AI workflows to build intelligent, responsive applications.
+            </p>
+          </div>
+          <div class="about-quote-deco" id="display-about-quote">
+            "Solving complex operational states with clean aesthetic visual design."
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. LOCATION & TIME CARD (1x1) -->
+      <section class="bento-card card-location">
+        <div class="card-spotlight"></div>
+        <div class="card-content">
+          <div class="card-label" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <i class="ph ph-planet"></i>
+              <span>Telemetry // Coordinate Tracker</span>
+            </div>
+            <button id="btn-edit-telemetry" class="action-btn-pill" onclick="openTelemetryEditModal()"><i class="ph ph-clock"></i> Edit Clock</button>
+          </div>
+          
+          <div class="location-details">
+            <!-- College Details Section -->
+            <div style="margin-bottom: 1rem;">
+              <div style="display: flex; align-items: flex-start; gap: 10px;">
+                <div class="loc-icon-box" style="background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.25); color: var(--accent-violet); width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;">
+                  <i class="ph ph-graduation-cap"></i>
+                </div>
+                <div class="loc-text">
+                  <h4 id="display-college-name" style="font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: var(--text-primary); line-height: 1.35;">Aurora Higher Education and Research Academy</h4>
+                  <span class="badge-pill" id="display-college-status" style="font-size: 0.62rem; padding: 2px 6px; background: rgba(0, 240, 255, 0.06); border-color: rgba(0, 240, 255, 0.15); color: var(--accent-cyan); display: inline-block; margin-top: 4px; font-weight: 500;">Deemed-to-be University</span>
+                  <div style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono); margin-top: 5px; display: flex; align-items: center; gap: 4px;" id="display-college-dept">
+                    <i class="ph ph-cpu" style="font-size: 0.8rem; color: var(--accent-cyan);"></i> <span>Computer Science department</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Communications Section -->
+            <div id="display-comms-section" style="margin-bottom: 1rem; border-top: 1px dashed rgba(255, 255, 255, 0.06); padding-top: 0.75rem;">
+              <div style="display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary);">
+                <div id="display-contact-row" style="display: flex; align-items: center; gap: 8px;">
+                  <i class="ph ph-phone" style="color: var(--accent-violet); font-size: 0.85rem;"></i>
+                  <span id="display-college-contact">+91 9100123456</span>
+                </div>
+                <div id="display-email-row" style="display: flex; align-items: center; gap: 8px;">
+                  <i class="ph ph-envelope-simple" style="color: var(--accent-cyan); font-size: 0.85rem;"></i>
+                  <span id="display-college-email">info@aurora.edu.in</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campus & Setting Section -->
+            <div style="border-top: 1px dashed rgba(255, 255, 255, 0.06); padding-top: 0.75rem; margin-bottom: 0.5rem; display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; align-items: flex-start; gap: 10px;">
+                <div class="loc-icon-box" style="background: rgba(0, 240, 255, 0.08); border-color: rgba(0, 240, 255, 0.25); color: var(--accent-cyan); width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;">
+                  <i class="ph ph-map-pin"></i>
+                </div>
+                <div class="loc-text">
+                  <h4 style="font-family: var(--font-display); font-size: 0.82rem; font-weight: 500; color: var(--text-primary); margin-bottom: 2px;">Primary Campus</h4>
+                  <p id="display-primary-campus" style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono); line-height: 1.35;">Bhongir, Yadadri - 508116, Telangana, India</p>
+                </div>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 10px;">
+                <div class="loc-icon-box" style="background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.25); color: var(--accent-violet); width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;">
+                  <i class="ph ph-compass"></i>
+                </div>
+                <div class="loc-text">
+                  <h4 style="font-family: var(--font-display); font-size: 0.82rem; font-weight: 500; color: var(--text-primary); margin-bottom: 2px;">Specific Setting</h4>
+                  <p id="display-specific-setting" style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono); line-height: 1.35;">Muthireddigudem, Telangana</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live India Time Widget -->
+          <div class="clock-display">
+            <span class="clock-title">Prakasam Clock (IST)</span>
+            <div class="clock-time" id="ist-clock">
+              00:00:00 <span class="clock-ampm text-xs ml-1 text-[#00f0ff]">AM</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. SKILLS SECTION (1x2) -->
+      <section class="bento-card card-skills">
+        <div class="card-spotlight"></div>
+        <div class="card-content" style="gap: 1.5rem;">
+          <div>
+            <div class="card-label">
+              <i class="ph ph-gear"></i>
+              <span>Tech Stack // Linear Kernels</span>
+            </div>
+            
+            <div class="skills-wrapper">
+              <div class="skill-row" data-skill="react">
+                <div class="skill-info">
+                  <i class="ph ph-atom"></i>
+                  <span class="skill-name">React JS</span>
+                </div>
+              </div>
+              <div class="skill-row" data-skill="python">
+                <div class="skill-info">
+                  <i class="ph ph-terminal"></i>
+                  <span class="skill-name">Python</span>
+                </div>
+              </div>
+              <div class="skill-row" data-skill="sql">
+                <div class="skill-info">
+                  <i class="ph ph-database"></i>
+                  <span class="skill-name">SQL Database</span>
+                </div>
+              </div>
+              <div class="skill-row" data-skill="css">
+                <div class="skill-info">
+                  <i class="ph ph-palette"></i>
+                  <span class="skill-name">CSS / Styling</span>
+                </div>
+              </div>
+              <div class="skill-row" data-skill="copilot">
+                <div class="skill-info">
+                  <i class="ph ph-git-branch"></i>
+                  <span class="skill-name">GitHub Copilot</span>
+                </div>
+              </div>
+              <div class="skill-row" data-skill="n8n">
+                <div class="skill-info">
+                  <i class="ph ph-intersect"></i>
+                  <span class="skill-name">n8n Automation</span>
+                </div>
+              </div>
+              <div class="skill-row" data-skill="aistudio">
+                <div class="skill-info">
+                  <i class="ph ph-magic-wand"></i>
+                  <span class="skill-name">Google AI Studio</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. PROJECTS SECTION BENTO BOX (2x2) -->
+      <section class="bento-card card-projects">
+        <div class="card-spotlight"></div>
+        <div class="card-content">
+          <div class="card-label" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <i class="ph ph-folder-open"></i>
+              <span>Curated Deployments // Functional Mockups</span>
+            </div>
+            <button id="btn-add-project" class="action-btn-pill" onclick="openAddProjectModal()"><i class="ph ph-plus-circle"></i> Add Project</button>
+          </div>
+
+          <div class="projects-grid">
+            
+            <!-- Project 1: SafePay student UPI -->
+            <div class="proj-item">
+              <div>
+                <div class="proj-header">
+                  <div class="proj-tech-badges">
+                    <span class="proj-tech-badge">UPI Emulator</span>
+                    <span class="proj-tech-badge">GPS Radar</span>
+                  </div>
+                  <i class="ph ph-wallet" style="font-size: 1.4rem; color: var(--accent-cyan);"></i>
+                </div>
+                <h3 class="proj-title">SafePay: Student UPI App</h3>
+                <p class="proj-desc">
+                  Simulates a student transaction framework with real-time Parental GPS coordination, local spending cap verification, and dynamic alerts.
+                </p>
+              </div>
+
+              <!-- Compact Student UPI / Parent GPS Simulator widget -->
+              <div class="safepay-simulator-widget">
+                <!-- Tabs to switch between child and parent perspectives -->
+                <div class="safepay-tabs">
+                  <button type="button" class="safepay-tab-btn active" onclick="switchSafepayTab('student')">
+                    <i class="ph ph-student"></i> Student pay
+                  </button>
+                  <button type="button" class="safepay-tab-btn" onclick="switchSafepayTab('parent')">
+                    <i class="ph ph-eye"></i> Parent Radar
+                  </button>
+                </div>
+
+                <!-- Tab 1: Student UPI Panel -->
+                <div class="safepay-panel active" id="panel-student">
+                  <div class="student-balance-card">
+                    <div class="balance-header">
+                      <span>WALLET COMPONENT</span>
+                      <span class="wallet-id">bhanu@payupi</span>
+                    </div>
+                    <div class="balance-val" id="safepay-balance-text">₹240.00</div>
+                    
+                    <div class="limit-progress-box">
+                      <div class="limit-labels">
+                        <span>Daily Spending Cap Used</span>
+                        <span id="limit-usage-text">₹260 / ₹500</span>
+                      </div>
+                      <div class="limit-bar-bg">
+                        <div class="limit-bar-fill" id="limit-progress-bar" style="width: 52%;"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="upi-pay-inputs">
+                    <select class="upi-input" id="safepay-input-store">
+                      <option value="Campus Cafeteria" data-avg="120">Campus Cafeteria</option>
+                      <option value="University Book Store" data-avg="350">Book Store</option>
+                      <option value="Stationery Depot" data-avg="60">Stationery Depot</option>
+                      <option value="Amusement Lounge" data-avg="600">Amusement Lounge</option>
+                    </select>
+                    <input type="number" class="upi-input" placeholder="Amount (₹)" id="safepay-input-amt" min="1" max="2000" value="120">
+                  </div>
+                  
+                  <button type="button" class="upi-trigger-btn" id="safepay-pay-btn" onclick="executeUPIPayment()">
+                    <i class="ph ph-check-circle"></i> AUTHORIZE SECURE UPI PAY
+                  </button>
+
+                  <!-- Student UPI Transaction History Box -->
+                  <div class="student-history-box">
+                    <div class="history-title-row">
+                      <span>TRANSACTION LOGS</span>
+                      <span style="color: var(--accent-cyan); font-size: 0.55rem;">LOCAL STACK</span>
+                    </div>
+                    <div class="student-history-list" id="safepay-history-log-list">
+                      <!-- Dynamically rendered -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tab 2: Parent Monitor Radar Panel -->
+                <div class="safepay-panel" id="panel-parent">
+                  <div class="parent-limit-control">
+                    <div class="limit-setter-label">
+                      <span>Adjust Daily Limit Cap</span>
+                      <span class="limit-value-display" id="parent-limit-display">₹500</span>
+                    </div>
+                    <input type="range" min="100" max="1500" step="50" value="500" class="limit-slider-input" id="parent-limit-slider" oninput="adjustParentalLimit(this.value)">
+                  </div>
+
+                  <div class="radar-telemetry-box">
+                    <div class="radar-outer">
+                      <div class="radar-pulse"></div>
+                      <div class="radar-blip"></div>
+                    </div>
+                    <div class="telemetry-txt">
+                      <div class="telemetry-coords">15.5057° N, 79.9499° E</div>
+                      <div class="telemetry-status">Prakasam District Location Active</div>
+                    </div>
+                  </div>
+
+                  <!-- Notification live alerts stack -->
+                  <div class="parent-alert-feed" id="parent-notifications-log">
+                    <div class="feed-item">[10:42 PM] GPS Ping: Student entered Campus Cafeteria</div>
+                    <div class="feed-item success">[09:12 AM] Authorized: ₹150.00 Book Store transaction</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2: Advanced Calculator Engine -->
+            <div class="proj-item">
+              <div>
+                <div class="proj-header">
+                  <div class="proj-tech-badges">
+                    <span class="proj-tech-badge violet">Algorithmic</span>
+                    <span class="proj-tech-badge violet">Responsive</span>
+                  </div>
+                  <i class="ph ph-calculator" style="font-size: 1.4rem; color: var(--accent-violet);"></i>
+                </div>
+                <h3 class="proj-title">Advanced Calculator</h3>
+                <p class="proj-desc">
+                   calculation engine handling arithmetic, complex operational transitions, and mathematical parsing state machines.
+                </p>
+              </div>
+
+              <!-- Live Mini Calculator Simulator Widget -->
+              <div class="calc-simulator-widget">
+                <div class="calc-sim-screen">
+                  <div class="calc-screen-eq" id="calc-sim-eq"></div>
+                  <div class="calc-screen-current" id="calc-sim-output">521.8</div>
+                </div>
+                <div class="calc-sim-keypad">
+                  <button type="button" class="calc-btn clear" onclick="handleCalcSimKey('C')">C</button>
+                  <button type="button" class="calc-btn op" onclick="handleCalcSimKey('/')">/</button>
+                  <button type="button" class="calc-btn op" onclick="handleCalcSimKey('*')">*</button>
+                  <button type="button" class="calc-btn op" onclick="handleCalcSimKey('-')">-</button>
+                  <button type="button" class="calc-btn" onclick="handleCalcSimKey('7')">7</button>
+                  <button type="button" class="calc-btn" onclick="handleCalcSimKey('8')">8</button>
+                  <button type="button" class="calc-btn" onclick="handleCalcSimKey('9')">9</button>
+                  <button type="button" class="calc-btn op" onclick="handleCalcSimKey('+')">+</button>
+                  <button type="button" class="calc-btn" onclick="handleCalcSimKey('4')">4</button>
+                  <button type="button" class="calc-btn" onclick="handleCalcSimKey('5')">5</button>
+                  <button type="button" class="calc-btn" onclick="handleCalcSimKey('6')">6</button>
+                  <button type="button" class="calc-btn calc-equals" style="grid-row: span 2; height: 100%" onclick="handleCalcSimKey('=')">=</button>
+                  <button type="button" class="calc-btn" onclick="handleCalcSimKey('1')">1</button>
+                  <button type="button" class="calc-btn" onclick="handleCalcSimKey('2')">2</button>
+                  <button type="button" class="calc-btn" onclick="handleCalcSimKey('3')">3</button>
+                  <!-- 0 takes remaining left column space next to equals -->
+                  <button type="button" class="calc-btn" style="grid-column: span 3" onclick="handleCalcSimKey('0')">0</button>
+                </div>
+              </div>
+
+              <a href="https://1wcalculator.niat.tech" target="_blank" class="proj-footer-link">
+                <span>View Live Application</span>
+                <i class="ph ph-arrow-square-out"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. CONTACT CONNECT PORT (1x1) -->
+      <section class="bento-card card-connect">
+        <div class="card-spotlight"></div>
+        <div class="card-content">
+          <div>
+            <div class="card-label">
+              <i class="ph ph-paper-plane-tilt"></i>
+              <span>Communications Port // Connect Grid</span>
+            </div>
+            
+            <p class="connect-text">
+              Reach out directly to establish secure operations. Open to collaborative ventures in Frontend Development, AI automation workflows, and Data Pipelines.
+            </p>
+
+            <!-- Personal Contact Details Matrix -->
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 0.5rem; margin-bottom: 1rem;">
+
+              <!-- Personal Email Block -->
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Direct mailing node</label>
+                <div class="copy-email-block" style="margin: 0; padding: 0.65rem 0.85rem;">
+                  <span class="email-display-text" id="user-email-text" style="font-size: 0.8rem;">bhanuatla521@gmail.com</span>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <a id="link-direct-email" href="https://mail.google.com/mail/?view=cm&fs=1&to=bhanuatla521@gmail.com" target="_blank" rel="noopener noreferrer" class="action-btn-pill" style="padding: 2px 8px; font-size: 0.62rem; text-decoration: none; border-color: rgba(0, 240, 255, 0.3); color: var(--accent-cyan); background: rgba(0, 240, 255, 0.08); flex-shrink: 0;" onmouseover="this.style.boxShadow='0 0 12px rgba(0, 240, 255, 0.35)'; this.style.background='var(--accent-cyan)'; this.style.color='var(--bg-dark)'; this.style.borderColor='var(--accent-cyan)'" onmouseout="this.style.boxShadow='none'; this.style.background='rgba(0, 240, 255, 0.08)'; this.style.color='var(--accent-cyan)'; this.style.borderColor='rgba(0, 240, 255, 0.3)'">
+                      <i class="ph ph-paper-plane-tilt"></i> Gmail
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Social Engagement Anchors -->
+          <div class="social-row">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bhanuatla521@gmail.com" class="social-btn" id="direct-mailto-action-btn" target="_blank" rel="noopener noreferrer">
+              <i class="ph ph-envelope-simple"></i>
+              <span>Direct Link</span>
+            </a>
+            <a href="https://github.com" target="_blank" class="social-btn">
+              <i class="ph ph-github-logo"></i>
+              <span>Repository</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER SIGNATURE -->
+    <footer>
+      <div class="footer-left">
+        <div class="footer-pulse-dot"></div>
+        <span>A.V. Bhanu Prakash Reddy &copy; 2026 // Prakasam Standard Node</span>
+      </div>
+      <div>Designed under Cyber-Minimalist Bento Grid Specification // v1.2</div>
+    </footer>
+  </div>
+
+  <!-- Dynamic HUD System notifications popup -->
+  <div id="toast-container"></div>
+
+  <!-- FUTUR MODAL SYSTEM OVERLAY -->
+  <div class="futur-modal-backdrop" id="custom-edit-modal">
+    <div class="futur-modal-window">
+      <div class="futur-modal-header">
+        <div class="futur-modal-title">
+          <i class="ph ph-terminal-window"></i>
+          <span id="modal-system-title">SYSTEM CONFIGURATION PANEL</span>
+        </div>
+        <button class="futur-modal-close" onclick="closeFuturModal()">&times;</button>
+      </div>
+      <div class="futur-modal-body" id="modal-container-content">
+        <!-- Dynamic form content rendered on the fly -->
+      </div>
+    </div>
+  </div>
+
+  <!-- -------------------------------------------------------------
+       JAVASCRIPT DYNAMIC INTERACTIONS ENGINE
+       ------------------------------------------------------------- -->
+  <script type="module">
+    import { animate, stagger } from "motion";
+
+    // Immediately hide bento cards dynamically to prevent layout flashing before animation starts
+    document.querySelectorAll('.bento-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(40px) scale(0.96)';
+    });
+
+    // 1. DYNAMIC TYPE / HUD SYNC LOGS
+    const skillDiagnostics = {
+      react: "[SYS] Initializing Virtual DOM engine... React client version 19.x bound. Hydration sequence stable.",
+      python: "[SYS] Loaded Anaconda vector arrays. Python model compilation executing. Pandas & NumPy kernels compiled.",
+      sql: "[SYS] Executing query: SELECT DISTINCT knowledge FROM database; Response: indexes optimized.",
+      css: "[SYS] Compiling stylesheet... custom CSS custom layout properties active. Glassmorphism refraction: 100%.",
+      copilot: "[SYS] Copilot contextual parser connected. Real-time predictive autocomplete active // telemetry matching.",
+      n8n: "[SYS] Dispatching webhook triggers... n8n workflow listeners established correctly on production server.",
+      aistudio: "[SYS] Connect token generated for gemini-2.5-flash context window. Structured prompt parser ready."
+    };
+
+    // Hover dynamic logs loader
+    document.querySelectorAll('.skill-row').forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        const skillKey = row.getAttribute('data-skill');
+        const monitorField = document.getElementById('terminal-screen');
+        if (skillDiagnostics[skillKey] && monitorField) {
+          monitorField.textContent = skillDiagnostics[skillKey];
+          monitorField.style.color = "var(--accent-cyan)";
+        }
+      });
+      row.addEventListener('mouseleave', () => {
+        const monitorField = document.getElementById('terminal-screen');
+        if (monitorField) {
+          monitorField.textContent = "[SYS] Ready. Monitoring telemetry coordinates. Select a core node...";
+          monitorField.style.color = "#34d399";
+        }
+      });
+    });
+
+    // 2. DYNAMICAL INDIAN STANDARD TIME CLOCK (UTC+5:30)
+    function updateBhanuClock() {
+      const clockBox = document.getElementById('ist-clock');
+      if (!clockBox) return;
+
+      const dateObj = new Date();
+      // Translate local timezone to Custom Configured Time (Universal Offset Math)
+      const systemUtc = dateObj.getTime() + (dateObj.getTimezoneOffset() * 60000);
+      const ISTOffset = (window.portfolioState && typeof window.portfolioState.clockOffset === 'number' ? window.portfolioState.clockOffset : 5.5) * 3600000;
+      const istTime = new Date(systemUtc + ISTOffset);
+
+      let hrs = istTime.getHours();
+      const mins = String(istTime.getMinutes()).padStart(2, '0');
+      const secs = String(istTime.getSeconds()).padStart(2, '0');
+      const period = hrs >= 12 ? 'PM' : 'AM';
+
+      hrs = hrs % 12;
+      hrs = hrs ? hrs : 12; // Form mats 12 AM/PM
+      const hrsStr = String(hrs).padStart(2, '0');
+
+      clockBox.innerHTML = `${hrsStr}:${mins}:${secs} <span class="clock-ampm text-xs ml-1 tracking-widest text-[#00f0ff] font-semibold">${period}</span>`;
+    }
+    
+    // Maintain ticking clock
+    setInterval(updateBhanuClock, 1000);
+    updateBhanuClock(); // On first thread initialize
+
+    // 3. COPY EMAIL SYSTEM ACTIONS WITH SOUNDLESS DEPLOYED TOASTS
+    const emailActionBtn = document.getElementById('copy-email-action-btn');
+    if (emailActionBtn) {
+      emailActionBtn.addEventListener('click', () => {
+        if (typeof window.copyUserEmail === 'function') {
+          window.copyUserEmail();
+        }
+      });
+    }
+
+    function showHUDSystemToast(title, bodyText) {
+      const parentContainer = document.getElementById('toast-container');
+      if (!parentContainer) return;
+
+      const individualToast = document.createElement('div');
+      individualToast.className = 'futur-toast';
+      individualToast.innerHTML = `
+        <i class="ph ph-terminal-window toast-icon"></i>
+        <div class="toast-content">
+          <span class="sys-tag">${title}</span>
+          <span class="main-msg">${bodyText}</span>
+        </div>
+      `;
+
+      parentContainer.appendChild(individualToast);
+
+      // Animation enter frame sequence
+      setTimeout(() => {
+        individualToast.classList.add('active');
+      }, 50);
+
+      // Self cleanup lifecycle
+      setTimeout(() => {
+        individualToast.classList.remove('active');
+        setTimeout(() => {
+          individualToast.remove();
+        }, 400);
+      }, 4200);
+    }
+
+    // 4. BENTO CARDS CURSOR SPOTLIGHT TRACKER
+    const cardsList = document.querySelectorAll('.bento-card, .proj-item');
+    cardsList.forEach(c => {
+      c.addEventListener('mousemove', (e) => {
+        const bounds = c.getBoundingClientRect();
+        const posX = e.clientX - bounds.left;
+        const posY = e.clientY - bounds.top;
+        c.style.setProperty('--mouse-x', `${posX}px`);
+        c.style.setProperty('--mouse-y', `${posY}px`);
+      });
+    });
+
+    // 1% Custom Pointer trail tracking
+    const customCursorRing = document.getElementById('interactive-pointer');
+    let cursorPosX = 0;
+    let cursorPosY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+    });
+
+    // Inertia math tracking (60fps animation frame loop)
+    function animateTrailingPointer() {
+      if (customCursorRing) {
+        cursorPosX += (targetX - cursorPosX) * 0.14;
+        cursorPosY += (targetY - cursorPosY) * 0.14;
+        customCursorRing.style.left = `${cursorPosX}px`;
+        customCursorRing.style.top = `${cursorPosY}px`;
+      }
+      requestAnimationFrame(animateTrailingPointer);
+    }
+    animateTrailingPointer();
+
+    // Hover scales for pointer actions
+    document.querySelectorAll('.bento-card, button, a, .skill-row').forEach(element => {
+      element.addEventListener('mouseenter', () => {
+        if (customCursorRing) customCursorRing.classList.add('magnetic');
+      });
+      element.addEventListener('mouseleave', () => {
+        if (customCursorRing) customCursorRing.classList.remove('magnetic');
+      });
+    });
+
+    // 5. DATA SCIENCE INTERACTIVE CANVAS RENDERER
+    const canvasObj = document.getElementById('bg-canvas');
+    if (canvasObj) {
+      const renderCtx = canvasObj.getContext('2d');
+      let dots = [];
+      const densityParam = 45;
+
+      function resizeGlobalCanvas() {
+        canvasObj.width = window.innerWidth;
+        canvasObj.height = window.innerHeight;
+        initDataNodes();
+      }
+
+      class NodeConnector {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.velX = (Math.random() - 0.5) * 0.38;
+          this.velY = (Math.random() - 0.5) * 0.38;
+          this.radius = Math.random() * 1.5 + 1;
+        }
+
+        update() {
+          this.x += this.velX;
+          this.y += this.velY;
+
+          // Boundary checks
+          if (this.x < 0 || this.x > canvasObj.width) this.velX = -this.velX;
+          if (this.y < 0 || this.y > canvasObj.height) this.velY = -this.velY;
+        }
+
+        draw() {
+          renderCtx.beginPath();
+          renderCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          renderCtx.fillStyle = 'rgba(0, 240, 255, 0.4)';
+          renderCtx.fill();
+        }
+      }
+
+      function initDataNodes() {
+        dots = [];
+        const dynamicCount = Math.floor((canvasObj.width * canvasObj.height) / 22000);
+        const dotCap = Math.min(dynamicCount, 110);
+        for (let i = 0; i < dotCap; i++) {
+          dots.push(new NodeConnector(Math.random() * canvasObj.width, Math.random() * canvasObj.height));
+        }
+      }
+
+      function runLoop() {
+        renderCtx.clearRect(0, 0, canvasObj.width, canvasObj.height);
+        
+        // Draw Subtle digital blueprint coordinate lines
+        renderCtx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
+        renderCtx.lineWidth = 1;
+        
+        const lineInterval = 100;
+        for (let x = 0; x < canvasObj.width; x += lineInterval) {
+          renderCtx.beginPath();
+          renderCtx.moveTo(x, 0);
+          renderCtx.lineTo(x, canvasObj.height);
+          renderCtx.stroke();
+        }
+        for (let y = 0; y < canvasObj.height; y += lineInterval) {
+          renderCtx.beginPath();
+          renderCtx.moveTo(0, y);
+          renderCtx.lineTo(canvasObj.width, y);
+          renderCtx.stroke();
+        }
+
+        // Draw nodes and connective links
+        for (let a = 0; a < dots.length; a++) {
+          dots[a].update();
+          dots[a].draw();
+
+          for (let b = a + 1; b < dots.length; b++) {
+            const deltaX = dots[a].x - dots[b].x;
+            const deltaY = dots[a].y - dots[b].y;
+            const separation = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+            if (separation < 160) {
+              renderCtx.beginPath();
+              renderCtx.moveTo(dots[a].x, dots[a].y);
+              renderCtx.lineTo(dots[b].x, dots[b].y);
+              const opacVal = (1 - (separation / 160)) * 0.08;
+              renderCtx.strokeStyle = `rgba(0, 240, 255, ${opacVal})`;
+              renderCtx.lineWidth = 0.8;
+              renderCtx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(runLoop);
+      }
+
+      window.addEventListener('resize', resizeGlobalCanvas);
+      resizeGlobalCanvas();
+      runLoop();
+    }
+
+    // 6. HERO CHIP NEURAL NETWORK DATA BACKGROUND
+    const heroCav = document.getElementById('hero-canvas');
+    if (heroCav) {
+      const heroCtx = heroCav.getContext('2d');
+      let nodes = [];
+
+      function sizeHeroCanvas() {
+        const boundingBox = heroCav.parentElement.getBoundingClientRect();
+        heroCav.width = boundingBox.width;
+        heroCav.height = boundingBox.height;
+        initHeroNodes();
+      }
+
+      class MeshPoint {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.velX = (Math.random() - 0.5) * 0.4;
+          this.velY = (Math.random() - 0.5) * 0.4;
+          this.radius = Math.random() * 2 + 1;
+        }
+
+        update() {
+          this.x += this.velX;
+          this.y += this.velY;
+
+          if (this.x < 0 || this.x > heroCav.width) this.velX = -this.velX;
+          if (this.y < 0 || this.y > heroCav.height) this.velY = -this.velY;
+        }
+
+        draw() {
+          heroCtx.beginPath();
+          heroCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          heroCtx.fillStyle = 'rgba(188, 0, 221, 0.4)';
+          heroCtx.fill();
+        }
+      }
+
+      function initHeroNodes() {
+        nodes = [];
+        const amt = Math.floor(heroCav.width / 16);
+        const limitAmt = Math.min(amt, 32);
+        for (let i = 0; i < limitAmt; i++) {
+          nodes.push(new MeshPoint(Math.random() * heroCav.width, Math.random() * heroCav.height));
+        }
+      }
+
+      function runHeroAnim() {
+        heroCtx.clearRect(0, 0, heroCav.width, heroCav.height);
+        
+        for (let i = 0; i < nodes.length; i++) {
+          nodes[i].update();
+          nodes[i].draw();
+
+          for (let j = i + 1; j < nodes.length; j++) {
+            const diffX = nodes[i].x - nodes[j].x;
+            const diffY = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(diffX * diffX + diffY * diffY);
+
+            if (dist < 110) {
+              heroCtx.beginPath();
+              heroCtx.moveTo(nodes[i].x, nodes[i].y);
+              heroCtx.lineTo(nodes[j].x, nodes[j].y);
+              const brightness = (1 - (dist / 110)) * 0.16;
+              heroCtx.strokeStyle = `rgba(188, 0, 221, ${brightness})`;
+              heroCtx.lineWidth = 0.82;
+              heroCtx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(runHeroAnim);
+      }
+
+      window.addEventListener('resize', sizeHeroCanvas);
+      // Wait slightly to acquire accurate parent bounds on load
+      setTimeout(() => {
+        sizeHeroCanvas();
+        runHeroAnim();
+      }, 100);
+    }
+
+    // 7. SAFEPAY STUDENT UPI APP & PARENTAL GPS RADAR SIMULATOR
+    let safepayState = {
+      walletBalance: 240.00,
+      dailyUsed: 260.00,
+      dailyLimit: 500.00,
+      storeLogs: [
+        { id: 1, store: "University Book Store", amount: 150.00, status: "success", time: "09:12 AM", message: "Approved" },
+        { id: 2, store: "Campus Cafeteria", amount: 110.00, status: "success", time: "08:30 AM", message: "Approved" },
+        { id: 3, store: "Amusement Lounge", amount: 600.00, status: "decline", time: "Yesterday", message: "Limit Breach" }
+      ]
+    };
+
+    function switchSafepayTab(tabName) {
+      const studentBtn = document.querySelector('.safepay-tab-btn:nth-child(1)');
+      const parentBtn = document.querySelector('.safepay-tab-btn:nth-child(2)');
+      const studentPanel = document.getElementById('panel-student');
+      const parentPanel = document.getElementById('panel-parent');
+
+      if (tabName === 'student') {
+        studentBtn.classList.add('active');
+        parentBtn.classList.remove('active');
+        studentPanel.classList.add('active');
+        parentPanel.classList.remove('active');
+      } else {
+        studentBtn.classList.remove('active');
+        parentBtn.classList.add('active');
+        studentPanel.classList.remove('active');
+        parentPanel.classList.add('active');
+      }
+    }
+
+    // Auto update inputs when selecting store preset
+    const safepayStoreSelect = document.getElementById('safepay-input-store');
+    const safepayAmtInput = document.getElementById('safepay-input-amt');
+    if (safepayStoreSelect && safepayAmtInput) {
+      safepayStoreSelect.addEventListener('change', (e) => {
+        const option = e.target.options[e.target.selectedIndex];
+        const avgPrice = option.getAttribute('data-avg');
+        if (avgPrice) {
+          safepayAmtInput.value = avgPrice;
+        }
+      });
+    }
+
+    // Parental daily limit adjusting slider
+    function adjustParentalLimit(val) {
+      safepayState.dailyLimit = parseFloat(val);
+      
+      const limitValDisplay = document.getElementById('parent-limit-display');
+      if (limitValDisplay) {
+        limitValDisplay.textContent = `₹${val}`;
+      }
+
+      // Re-trigger visual layout updates
+      renderSafepayStats();
+      
+      // Post telemetry logs
+      addParentLog(`Daily spending limit modified to ₹${val}`);
+    }
+
+    function renderSafepayStats() {
+      // Update balance
+      const balanceTxt = document.getElementById('safepay-balance-text');
+      if (balanceTxt) {
+        balanceTxt.textContent = `₹${safepayState.walletBalance.toFixed(2)}`;
+      }
+
+      // Update Spending progress elements
+      const usageTxt = document.getElementById('limit-usage-text');
+      const barFill = document.getElementById('limit-progress-bar');
+      
+      if (usageTxt && barFill) {
+        usageTxt.textContent = `₹${safepayState.dailyUsed.toFixed(0)} / ₹${safepayState.dailyLimit.toFixed(0)}`;
+        const percent = Math.min((safepayState.dailyUsed / safepayState.dailyLimit) * 100, 100);
+        barFill.style.width = `${percent}%`;
+
+        // Style safety colors on limit progress bar
+        if (percent > 90) {
+          barFill.style.background = 'linear-gradient(90deg, #f87171, #ef4444)'; // Red warning
+        } else if (percent > 70) {
+          barFill.style.background = 'linear-gradient(90deg, #f59e0b, #d97706)'; // Yellow cautionary
+        } else {
+          barFill.style.background = 'linear-gradient(90deg, var(--accent-cyan), var(--accent-violet))'; // Standard cyan-violet
+        }
+      }
+    }
+
+    function renderSafepayHistory() {
+      const historyListEl = document.getElementById('safepay-history-log-list');
+      if (!historyListEl) return;
+
+      historyListEl.innerHTML = "";
+
+      if (safepayState.storeLogs.length === 0) {
+        historyListEl.innerHTML = `
+          <div style="font-size: 0.6rem; color: var(--text-muted); text-align: center; padding: 12px 0;">
+            No transactions executed in current segment.
+          </div>
+        `;
+        return;
+      }
+
+      safepayState.storeLogs.slice().reverse().forEach(log => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = "history-item";
+        
+        const isSuccess = log.status === 'success';
+        const iconClass = isSuccess ? 'ph-check-circle' : 'ph-x-circle';
+        const statusClass = isSuccess ? 'success' : 'decline';
+        const statusLabel = isSuccess ? 'Approved' : 'Declined';
+        
+        itemDiv.innerHTML = `
+          <div class="history-item-left">
+            <div class="history-status-icon ${statusClass}">
+              <i class="ph ${iconClass}"></i>
+            </div>
+            <div class="history-item-details">
+              <span class="history-item-store">${log.store}</span>
+              <span class="history-item-time">${log.time}</span>
+            </div>
+          </div>
+          <div class="history-item-right">
+            <span class="history-item-price ${statusClass}">₹${log.amount.toFixed(2)}</span>
+            <span class="history-item-msg">${log.message || statusLabel}</span>
+          </div>
+        `;
+        historyListEl.appendChild(itemDiv);
+      });
+    }
+
+    function addParentLog(text, type = '') {
+      const parentLogBox = document.getElementById('parent-notifications-log');
+      if (!parentLogBox) return;
+
+      const rightNow = new Date();
+      const hrs = String(rightNow.getHours()).padStart(2, '0');
+      const mins = String(rightNow.getMinutes()).padStart(2, '0');
+      
+      const logDiv = document.createElement('div');
+      logDiv.className = `feed-item ${type}`;
+      logDiv.innerHTML = `<span>[${hrs}:${mins}] ${text}</span>`;
+      
+      parentLogBox.insertBefore(logDiv, parentLogBox.firstChild);
+    }
+
+    function executeUPIPayment() {
+      const amtSelect = document.getElementById('safepay-input-amt');
+      const storeSelect = document.getElementById('safepay-input-store');
+      if (!amtSelect || !storeSelect) return;
+
+      const chargeAmt = parseFloat(amtSelect.value);
+      const targetStore = storeSelect.value;
+
+      if (isNaN(chargeAmt) || chargeAmt <= 0) {
+        showHUDSystemToast("Input Error", "Please enter a valid transactional value.");
+        return;
+      }
+
+      // Local localized formatted time helper for student transaction records
+      const rightNow = new Date();
+      let hrs = rightNow.getHours();
+      const mins = String(rightNow.getMinutes()).padStart(2, '0');
+      const period = hrs >= 12 ? 'PM' : 'AM';
+      hrs = hrs % 12;
+      hrs = hrs ? hrs : 12;
+      const displayHours = String(hrs).padStart(2, '0');
+      const timestamp = `${displayHours}:${mins} ${period}`;
+
+      // 1st Check: Limit breach prevention
+      const hypotheticalNextSpend = safepayState.dailyUsed + chargeAmt;
+      if (hypotheticalNextSpend > safepayState.dailyLimit) {
+        showHUDSystemToast("LIMIT EXCEEDED [Parental Cap]", `Failed paying ₹${chargeAmt} to ${targetStore}. Daily limit reached.`);
+        addParentLog(`BLOCKED Purchase: ₹${chargeAmt} to ${targetStore} exceeds daily Cap!`, 'alert');
+        
+        // Add to history logs
+        safepayState.storeLogs.push({
+          id: Date.now(),
+          store: targetStore,
+          amount: chargeAmt,
+          status: "decline",
+          time: timestamp,
+          message: "Limit Exceeded"
+        });
+        renderSafepayHistory();
+        return;
+      }
+
+      // Check balance sanity
+      if (chargeAmt > safepayState.walletBalance) {
+        showHUDSystemToast("DECLINED: Low Balance", "Student wallet balance insufficient. Transfer required.");
+        
+        // Add to history logs
+        safepayState.storeLogs.push({
+          id: Date.now(),
+          store: targetStore,
+          amount: chargeAmt,
+          status: "decline",
+          time: timestamp,
+          message: "Low Funds"
+        });
+        renderSafepayHistory();
+        return;
+      }
+
+      // Authorize Segment Spinner
+      const btnPay = document.getElementById('safepay-pay-btn');
+      btnPay.disabled = true;
+      btnPay.innerHTML = `<i class="ph ph-circle-notch animate-spin"></i> TRANSMITTING INSECURE KEYPAD SIGNALS...`;
+
+      setTimeout(() => {
+        // Execute state changes
+        safepayState.walletBalance -= chargeAmt;
+        safepayState.dailyUsed += chargeAmt;
+
+        // Save successfully approved transaction logs
+        safepayState.storeLogs.push({
+          id: Date.now(),
+          store: targetStore,
+          amount: chargeAmt,
+          status: "success",
+          time: timestamp,
+          message: "Approved"
+        });
+
+        // Render update interfaces
+        renderSafepayStats();
+        renderSafepayHistory();
+        
+        // Notify Parent view
+        addParentLog(`Approved transaction: ₹${chargeAmt.toFixed(2)} spent at ${targetStore}`, 'success');
+        addParentLog(`GPS Tag: Student is at 15.5057° N, 79.9499° E during payment segment.`);
+        
+        showHUDSystemToast("Transaction Complete", `Authorized ₹${chargeAmt.toFixed(2)} to ${targetStore} successfully.`);
+        
+        // Return button state
+        btnPay.disabled = false;
+        btnPay.innerHTML = `<i class="ph ph-check-circle"></i> AUTHORIZE SECURE UPI PAY`;
+      }, 1500);
+    }
+
+    // Direct link mailto tracking popup toast triggers
+    const directMailtoBtn = document.getElementById('direct-mailto-action-btn');
+    if (directMailtoBtn) {
+      directMailtoBtn.addEventListener('click', () => {
+        showHUDSystemToast("Gmail Redirect", "Opening Gmail web client to contact Bhanu...");
+      });
+    }
+
+    // 8. MINI CALCULATOR SIMULATION ENGINE
+    let currentCalcEq = "";
+    const calcOutputScreen = document.getElementById('calc-sim-output');
+    const calcEquationScreen = document.getElementById('calc-sim-eq');
+
+    function handleCalcSimKey(keyVal) {
+      if (!calcOutputScreen || !calcEquationScreen) return;
+
+      if (keyVal === 'C') {
+        currentCalcEq = "";
+        calcOutputScreen.textContent = "0";
+        calcEquationScreen.textContent = "";
+      } else if (keyVal === '=') {
+        try {
+          if (!currentCalcEq) return;
+          // Security compliant mathematical parser (No arbitrary evals)
+          // Clean sanitization allowing numbers and arithmetic operators ONLY
+          const cleanExpression = currentCalcEq.replace(/[^0-9+\-*/.]/g, '');
+          const calculatedValue = Function(`"use strict"; return (${cleanExpression})`)();
+          
+          calcEquationScreen.textContent = currentCalcEq + " =";
+          
+          // Limit decimals output gracefully
+          if (calculatedValue % 1 === 0) {
+            calcOutputScreen.textContent = calculatedValue;
+          } else {
+            calcOutputScreen.textContent = parseFloat(calculatedValue.toFixed(4));
+          }
+          currentCalcEq = String(calculatedValue);
+        } catch(e) {
+          calcOutputScreen.textContent = "SYNTAX ERR";
+          calcEquationScreen.textContent = "CORRUPT STREAM";
+          currentCalcEq = "";
+          setTimeout(() => {
+            calcOutputScreen.textContent = "0";
+            calcEquationScreen.textContent = "";
+          }, 1500);
+        }
+      } else {
+        // Prevent stacking duplicate operational nodes
+        const lastChar = currentCalcEq[currentCalcEq.length - 1];
+        const isOperator = ['+', '-', '*', '/'].includes(keyVal);
+        const lastIsOperator = ['+', '-', '*', '/'].includes(lastChar);
+        
+        if (isOperator && lastIsOperator) {
+          // Overwrite preceding operator
+          currentCalcEq = currentCalcEq.slice(0, -1) + keyVal;
+        } else {
+          currentCalcEq += keyVal;
+        }
+        
+        calcOutputScreen.textContent = currentCalcEq;
+        calcEquationScreen.textContent = "TELEMETRY STACK Active";
+      }
+    }
+
+    // Initialize calculator screen visual mockups
+    if (calcOutputScreen) {
+      calcOutputScreen.textContent = "521.8";
+    }
+
+    // -------------------------------------------------------------
+    // DYNAMIC SYSTEM CONFIGURATION & COMPONENT MANAGEMENT ENGINE
+    // -------------------------------------------------------------
+    
+    // Custom beautiful vector avatar representing A.V. Bhanu Prakash Reddy
+    const BHANU_VECTOR_AVATAR = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100%25' height='100%25'><rect width='100' height='100' fill='%23f1f3f7'/><path d='M35,68 C45,75 55,75 65,68 L60,82 L40,82 Z' fill='%23aaa095'/><rect x='44' y='58' width='12' height='18' fill='%23b28b76'/><path d='M44,58 C48,64 52,64 56,58 Z' fill='%239e7662'/><path d='M33,35 C33,18 67,18 67,35 C67,48 64,59 50,59 C36,59 33,48 33,35 Z' fill='%23cca28f'/><circle cx='32' cy='38' r='3.5' fill='%23b28b76'/><circle cx='68' cy='38' r='3.5' fill='%23b28b76'/><path d='M31,34 C27,24 40,14 50,14 C60,14 73,24 69,34 C71,29 68,20 50,20 C32,20 29,29 31,34 Z' fill='%2316171a'/><path d='M31,33 C33,21 40,16 50,16 C60,16 67,21 69,33 C67,26 62,21 50,21 C38,21 33,26 31,33 Z' fill='%232b2d35'/><path d='M31,31 L33,36 L31,38 Z M69,31 L67,36 L69,38 Z' fill='%2316171a'/><path d='M40,49 C40,56 45,58 50,58 C55,58 60,56 60,49 C60,51 55,54 50,54 C45,54 40,51 40,49 Z' fill='%23917466' opacity='0.35'/><path d='M43,49 C47,47 53,47 57,49 C55,48 45,48 43,49 Z' fill='%23222328' opacity='0.75'/><path d='M36,31 Q41,29 45,31.5' stroke='%2316171a' stroke-width='1.5' stroke-linecap='round' fill='none'/><path d='M64,31 Q59,29 55,31.5' stroke='%2316171a' stroke-width='1.5' stroke-linecap='round' fill='none'/><ellipse cx='41' cy='34.5' rx='3' ry='1.8' fill='%23ffffff'/><circle cx='41' cy='34.5' r='1.5' fill='%23503a35'/><circle cx='40.5' cy='34' r='0.6' fill='%23ffffff'/><ellipse cx='59' cy='34.5' rx='3' ry='1.8' fill='%23ffffff'/><circle cx='59' cy='34.5' r='1.5' fill='%23503a35'/><circle cx='58.5' cy='34' r='0.6' fill='%23ffffff'/><rect x='36' y='31.5' width='10' height='7' rx='2.3' fill='none' stroke='%2316171a' stroke-width='1.4'/><rect x='54' y='31.5' width='10' height='7' rx='2.3' fill='none' stroke='%2316171a' stroke-width='1.4'/><path d='M46,34 L54,34' stroke='%2316171a' stroke-width='1.5' stroke-linecap='round'/><path d='M36,33 L32,33.5' stroke='%2316171a' stroke-width='1.2'/><path d='M64,33 L68,33.5' stroke='%2316171a' stroke-width='1.2'/><path d='M37,33 L41,35' stroke='rgba(118,230,255,0.75)' stroke-width='0.8' stroke-linecap='round'/><path d='M55,33 L59,35' stroke='rgba(118,230,255,0.75)' stroke-width='0.8' stroke-linecap='round'/><path d='M48,34 L48,43 C48,45 52,45 52,43' fill='none' stroke='%23b28b76' stroke-width='1.3' stroke-linecap='round'/><path d='M46,50 H54' stroke='%23b27b68' stroke-width='1.2' stroke-linecap='round' fill='none'/><path d='M40,70 L50,85 L44,85 Z' fill='%23ccdcd6'/><path d='M60,70 L50,85 L56,85 Z' fill='%23ccdcd6'/><path d='M45,72 L50,85 L55,72 Z' fill='%23adc2ba'/><circle cx='50' cy='82' r='0.6' fill='%23ffffff'/><circle cx='50' cy='88' r='0.6' fill='%23ffffff'/><path d='M20,100 L30,73 L42,92 L28,100 Z' fill='%231a1b24'/><path d='M80,100 L70,73 L58,92 L72,100 Z' fill='%231a1b24'/><path d='M30,73 L43,92 L50,100 L57,92 L70,73 L50,82 Z' fill='%23272834'/><path d='M20,100 C20,80 30,71 35,71 L43,92 Z' fill='%231a1b24'/><path d='M80,100 C80,80 70,71 65,71 L50,92 Z' fill='%231a1b24'/></svg>`;
+
+    // Initialize portfolioState
+    const defaultState = {
+      heroName: "A.V. Bhanu Prakash Reddy",
+      heroSubtitle: "Computer Science Engineering (Data Science) & Developer",
+      heroProfilePic: BHANU_VECTOR_AVATAR,
+      heroStatus: "1st Year CSE",
+      
+      aboutParagraph1: "First-year CSE undergraduate specializing in Data Science at Aurora Deemed University.",
+      aboutParagraph2: "I blend modern web technologies with data analytics and AI workflows to build intelligent, responsive applications.",
+      aboutQuote: "Solving complex operational states with clean aesthetic visual design.",
+
+      collegeName: "Aurora Higher Education and Research Academy",
+      collegeStatus: "Deemed-to-be University",
+      collegeDept: "Computer Science department",
+      collegeContact: "+91 9100123456",
+      collegeEmail: "info@aurora.edu.in",
+      primaryCampus: "Bhongir, Yadadri - 508116, Telangana, India",
+      specificSetting: "Muthireddigudem, Telangana",
+
+      locationTitle1: "Primary Campus: Bhongir",
+      locationCoords1: "Bhongir, Yadadri - 508116, Telangana, India",
+      locationTitle2: "Specific Setting: Muthireddigudem",
+      locationCoords2: "Muthireddigudem, Telangana",
+      clockTitle: "Aurora Clock (IST)",
+      clockOffset: 5.5,
+      
+      userContactNumber: "+91 91001 23456",
+      userContactEmail: "bhanuatla521@gmail.com",
+
+      projects: []
+    };
+
+    // Load from local storage
+    const savedStateStr = localStorage.getItem('bhanu_portfolio_state_v2');
+    if (savedStateStr) {
+      try {
+        window.portfolioState = JSON.parse(savedStateStr);
+      } catch (e) {
+        window.portfolioState = defaultState;
+      }
+    } else {
+      window.portfolioState = defaultState;
+    }
+
+    if (!window.portfolioState.projects) {
+      window.portfolioState.projects = [];
+    }
+
+    // Auto-upgrade legacy Unsplash placeholder
+    const legacyPicUrl = "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80";
+    if (!window.portfolioState.heroProfilePic || window.portfolioState.heroProfilePic === legacyPicUrl) {
+      window.portfolioState.heroProfilePic = BHANU_VECTOR_AVATAR;
+    }
+
+    // Auto-update to Aurora-specific college & location telemetry
+    if (!window.portfolioState.collegeName || window.portfolioState.locationTitle1 === "Prakasam District, AP") {
+      window.portfolioState.collegeName = "Aurora Higher Education and Research Academy";
+      window.portfolioState.collegeStatus = "Deemed-to-be University";
+      window.portfolioState.collegeDept = "Computer Science department";
+      window.portfolioState.collegeContact = "+91 9100123456";
+      window.portfolioState.collegeEmail = "info@aurora.edu.in";
+      window.portfolioState.primaryCampus = "Bhongir, Yadadri - 508116, Telangana, India";
+      window.portfolioState.specificSetting = "Muthireddigudem, Telangana";
+      
+      window.portfolioState.locationTitle1 = "Primary Campus: Bhongir";
+      window.portfolioState.locationCoords1 = "Bhongir, Yadadri - 508116, Telangana, India";
+      window.portfolioState.locationTitle2 = "Specific Setting: Muthireddigudem";
+      window.portfolioState.locationCoords2 = "Muthireddigudem, Telangana";
+      window.portfolioState.clockTitle = "Aurora Clock (IST)";
+    }
+
+    // Ensure about fields are populated
+    if (!window.portfolioState.aboutParagraph1) {
+      window.portfolioState.aboutParagraph1 = defaultState.aboutParagraph1;
+      window.portfolioState.aboutParagraph2 = defaultState.aboutParagraph2;
+      window.portfolioState.aboutQuote = defaultState.aboutQuote;
+    }
+
+    // Ensure personal contact details are populated
+    if (window.portfolioState.userContactNumber === undefined) {
+      window.portfolioState.userContactNumber = defaultState.userContactNumber;
+    }
+    if (window.portfolioState.userContactEmail === undefined) {
+      window.portfolioState.userContactEmail = defaultState.userContactEmail;
+    }
+
+    function saveStateToLocalStorage() {
+      localStorage.setItem('bhanu_portfolio_state_v2', JSON.stringify(window.portfolioState));
+    }
+
+    // Initialize all DOM elements using storage values on page load
+    function initializePortfolioFromState() {
+      // 1. Profile section
+      const heroTitleNode = document.querySelector('.hero-title');
+      if (heroTitleNode) {
+        heroTitleNode.textContent = window.portfolioState.heroName;
+      }
+      const heroSubtitleNode = document.querySelector('.hero-tagline span');
+      if (heroSubtitleNode) {
+        heroSubtitleNode.textContent = window.portfolioState.heroSubtitle;
+      }
+      const heroImgNode = document.querySelector('.avatar-frame img');
+      if (heroImgNode) {
+         if (window.portfolioState.heroProfilePic) {
+            heroImgNode.src = window.portfolioState.heroProfilePic;
+         }
+      }
+      const statusSpan = document.querySelector('.avatar-status-pill span:not(.pulse-dot)');
+      if (statusSpan) {
+        statusSpan.textContent = window.portfolioState.heroStatus;
+      }
+
+      // 1.5 About segment nodes
+      const aboutP1Node = document.getElementById('display-about-p1');
+      const aboutP2Node = document.getElementById('display-about-p2');
+      const aboutQuoteNode = document.getElementById('display-about-quote');
+      if (aboutP1Node) {
+        aboutP1Node.textContent = window.portfolioState.aboutParagraph1 || defaultState.aboutParagraph1;
+      }
+      if (aboutP2Node) {
+        aboutP2Node.textContent = window.portfolioState.aboutParagraph2 || "";
+        aboutP2Node.style.display = window.portfolioState.aboutParagraph2 ? 'block' : 'none';
+      }
+      if (aboutQuoteNode) {
+        aboutQuoteNode.textContent = window.portfolioState.aboutQuote || defaultState.aboutQuote;
+      }
+
+      // 2. Location & College section
+      const colNameNode = document.getElementById('display-college-name');
+      const colStatusNode = document.getElementById('display-college-status');
+      const colDeptNode = document.getElementById('display-college-dept');
+      const colContactNode = document.getElementById('display-college-contact');
+      const colEmailNode = document.getElementById('display-college-email');
+      const primCampNode = document.getElementById('display-primary-campus');
+      const specSettingNode = document.getElementById('display-specific-setting');
+
+      if (colNameNode) colNameNode.textContent = window.portfolioState.collegeName || "Aurora Higher Education and Research Academy";
+      if (colStatusNode) colStatusNode.textContent = window.portfolioState.collegeStatus || "Deemed-to-be University";
+      if (colDeptNode) {
+        const spanEl = colDeptNode.querySelector('span');
+        if (spanEl) spanEl.textContent = window.portfolioState.collegeDept || "Computer Science department";
+      }
+      // Contact details display with dynamic hiding when cleared
+      if (colContactNode) {
+        const hasContact = window.portfolioState.collegeContact !== undefined ? window.portfolioState.collegeContact : "+91 9100123456";
+        if (hasContact && hasContact.trim() !== '') {
+          colContactNode.textContent = hasContact;
+          const linkCall = document.getElementById('link-college-call');
+          if (linkCall) {
+            // Strip out non-dialable symbols except '+' for tel uri
+            const telUri = hasContact.replace(/[^\d+]/g, '');
+            linkCall.setAttribute('href', 'tel:' + telUri);
+          }
+          const row = document.getElementById('display-contact-row');
+          if (row) row.style.display = 'flex';
+        } else {
+          const row = document.getElementById('display-contact-row');
+          if (row) row.style.display = 'none';
+        }
+      }
+      
+      // Email details display with dynamic hiding when cleared
+      if (colEmailNode) {
+        const hasEmail = window.portfolioState.collegeEmail !== undefined ? window.portfolioState.collegeEmail : "info@aurora.edu.in";
+        if (hasEmail && hasEmail.trim() !== '') {
+          colEmailNode.textContent = hasEmail;
+          const linkEmail = document.getElementById('link-college-email');
+          if (linkEmail) {
+            linkEmail.setAttribute('href', 'mailto:' + hasEmail.trim());
+          }
+          const row = document.getElementById('display-email-row');
+          if (row) row.style.display = 'flex';
+        } else {
+          const row = document.getElementById('display-email-row');
+          if (row) row.style.display = 'none';
+        }
+      }
+
+      // Hide or show the whole communication divider box based on status of both
+      const commsSection = document.getElementById('display-comms-section');
+      if (commsSection) {
+        const contactVal = window.portfolioState.collegeContact !== undefined ? window.portfolioState.collegeContact : "+91 9100123456";
+        const emailVal = window.portfolioState.collegeEmail !== undefined ? window.portfolioState.collegeEmail : "info@aurora.edu.in";
+        if ((!contactVal || contactVal.trim() === '') && (!emailVal || emailVal.trim() === '')) {
+          commsSection.style.display = 'none';
+        } else {
+          commsSection.style.display = 'block';
+        }
+      }
+      if (primCampNode) primCampNode.textContent = window.portfolioState.primaryCampus || "Bhongir, Yadadri - 508116, Telangana, India";
+      if (specSettingNode) specSettingNode.textContent = window.portfolioState.specificSetting || "Muthireddigudem, Telangana";
+
+      // Clock Name
+      const clockTitleNode = document.querySelector('.card-location .clock-title');
+      if (clockTitleNode) clockTitleNode.textContent = window.portfolioState.clockTitle;
+
+      // Personal Contact rendering in communications port (Connect Card)
+      const userEmailText = document.getElementById('user-email-text');
+      const userPhoneText = document.getElementById('display-user-phone');
+      const linkCallDirect = document.getElementById('link-direct-call');
+      const linkEmailDirect = document.getElementById('link-direct-email');
+      const linkDirectMailto = document.getElementById('direct-mailto-action-btn');
+      const personalPhoneBlock = document.getElementById('personal-phone-block');
+
+      const contactEmail = window.portfolioState.userContactEmail || "bhanuatla521@gmail.com";
+      const contactPhone = window.portfolioState.userContactNumber !== undefined ? window.portfolioState.userContactNumber : "+91 91001 23456";
+
+      if (userEmailText) userEmailText.textContent = contactEmail;
+      if (linkEmailDirect) {
+        linkEmailDirect.setAttribute('href', 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(contactEmail));
+      }
+      if (linkDirectMailto) {
+        linkDirectMailto.setAttribute('href', 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(contactEmail));
+      }
+
+      if (userPhoneText) {
+        if (contactPhone && contactPhone.trim() !== '') {
+          userPhoneText.textContent = contactPhone;
+          if (personalPhoneBlock) personalPhoneBlock.style.display = 'flex';
+          if (linkCallDirect) {
+            const dialUri = contactPhone.replace(/[^\d+]/g, '');
+            linkCallDirect.setAttribute('href', 'tel:' + dialUri);
+          }
+        } else {
+          if (personalPhoneBlock) personalPhoneBlock.style.display = 'none';
+        }
+      }
+
+      // 3. Dynamic projects
+      renderCustomProjects();
+      
+      // Update clock
+      updateBhanuClock();
+    }
+
+    // Modal display control
+    function openFuturModal(title, bodyHtml) {
+      const modal = document.getElementById('custom-edit-modal');
+      const titleEl = document.getElementById('modal-system-title');
+      const bodyEl = document.getElementById('modal-container-content');
+      if (!modal || !titleEl || !bodyEl) return;
+
+      titleEl.innerHTML = `<i class="ph ph-terminal-window"></i> <span>${title}</span>`;
+      bodyEl.innerHTML = bodyHtml;
+      modal.classList.add('active');
+    }
+
+    function closeFuturModal() {
+      const modal = document.getElementById('custom-edit-modal');
+      if (modal) {
+        modal.classList.remove('active');
+      }
+    }
+
+    // 1. PROFILE EDITION MODAL
+    function openProfileEditModal() {
+      const isCustomAvatar = window.portfolioState.heroProfilePic && window.portfolioState.heroProfilePic.startsWith('data:image/svg+xml');
+      const previewPic = window.portfolioState.heroProfilePic || '';
+      
+      const html = `
+        <form id="form-edit-profile" onsubmit="saveProfileDetails(event)">
+          <div class="futur-form-group">
+            <label class="futur-form-label">Full Name</label>
+            <input type="text" id="input-profile-name" class="futur-form-input" required value="${window.portfolioState.heroName.replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Subtitle / Sub-Header Description</label>
+            <input type="text" id="input-profile-subtitle" class="futur-form-input" required value="${window.portfolioState.heroSubtitle.replace(/"/g, '&quot;')}">
+          </div>
+          
+          <div class="futur-form-group">
+            <label class="futur-form-label">Profile Image Upload (Drag & Drop or Click)</label>
+            <div id="drop-zone" class="futur-drop-zone">
+              <div class="drop-zone-icon" id="drop-zone-icon-el">
+                <i class="ph ph-image-square" style="font-size: 2rem; color: var(--accent-cyan);"></i>
+              </div>
+              <p class="drop-zone-text" style="color: var(--text-secondary); font-size: 0.72rem; font-family: var(--font-mono); margin: 6px 0; pointer-events: none;">
+                Drag & drop your photograph here, or <span class="drop-zone-browse" style="color: var(--accent-cyan); text-decoration: underline; cursor: pointer; font-weight: 500;">browse files</span>
+              </p>
+              <input type="file" id="input-profile-file" accept="image/*" style="display: none;">
+              
+              <div id="upload-preview-container" style="display: ${previewPic ? 'flex' : 'none'}; align-items: center; justify-content: center; flex-direction: column; gap: 8px; margin-top: 12px; border-top: 1px dashed rgba(255, 255, 255, 0.08); padding-top: 12px; pointer-events: auto;">
+                <img id="upload-preview" src="${previewPic}" alt="Selected Avatar" referrerPolicy="no-referrer" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-violet); background: rgba(255,255,255,0.03);">
+                <button type="button" id="btn-remove-uploaded-pic" style="background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.25); border-radius: 4px; padding: 4px 10px; font-size: 0.68rem; font-family: var(--font-mono); cursor: pointer; transition: all 0.25s ease;"><i class="ph ph-trash-simple"></i> Remove Image</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="futur-form-group">
+            <label class="futur-form-label">Or Profile Image URL (HTTPS or Base64 Stream)</label>
+            <input type="text" id="input-profile-pic" class="futur-form-input" value="${window.portfolioState.heroProfilePic}">
+          </div>
+          
+          <div class="futur-form-group">
+            <label class="futur-form-label">Status Label</label>
+            <input type="text" id="input-profile-status" class="futur-form-input" required value="${window.portfolioState.heroStatus.replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-actions">
+            <button type="button" class="futur-btn-secondary" onclick="closeFuturModal()">Cancel</button>
+            <button type="submit" class="futur-btn-primary"><i class="ph ph-floppy-disk"></i> Save Configuration</button>
+          </div>
+        </form>
+      `;
+      openFuturModal("Profile Configuration Console", html);
+
+      // Bind drag and drop events & file browsing listeners
+      const dropZone = document.getElementById('drop-zone');
+      const fileInput = document.getElementById('input-profile-file');
+      const textInput = document.getElementById('input-profile-pic');
+      const preview = document.getElementById('upload-preview');
+      const previewContainer = document.getElementById('upload-preview-container');
+      const removeBtn = document.getElementById('btn-remove-uploaded-pic');
+
+      if (dropZone && fileInput) {
+        // Trigger file window when clicking anywhere inside the empty dropzone or the browse text
+        dropZone.addEventListener('click', (e) => {
+          // If the remove button was clicked, don't trigger file window
+          if (e.target.closest('#btn-remove-uploaded-pic')) return;
+          fileInput.click();
+        });
+
+        // Setup drag and drop events
+        ['dragenter', 'dragover'].forEach(eventName => {
+          dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.add('dragover');
+          }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+          dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.remove('dragover');
+          }, false);
+        });
+
+        // Handle file drops
+        dropZone.addEventListener('drop', (e) => {
+          const dt = e.dataTransfer;
+          const files = dt.files;
+          if (files && files.length > 0) {
+            processSelectedFile(files[0]);
+          }
+        }, false);
+
+        // Handle native click file selections
+        fileInput.addEventListener('change', (e) => {
+          if (fileInput.files && fileInput.files.length > 0) {
+            processSelectedFile(fileInput.files[0]);
+          }
+        });
+      }
+
+      if (removeBtn) {
+        removeBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (fileInput) fileInput.value = '';
+          if (textInput) textInput.value = '';
+          if (preview) preview.src = '';
+          if (previewContainer) previewContainer.style.display = 'none';
+          showHUDSystemToast("Image Cleared", "SYS: Profile picture cleared. Please upload another one or save clean.");
+        });
+      }
+
+      // Also sync raw text input changes to the preview panel instantly
+      if (textInput) {
+        textInput.addEventListener('input', () => {
+          const val = textInput.value.trim();
+          if (val) {
+            if (preview) preview.src = val;
+            if (previewContainer) previewContainer.style.display = 'flex';
+          } else {
+            if (previewContainer) previewContainer.style.display = 'none';
+          }
+        });
+      }
+
+      function processSelectedFile(file) {
+        if (!file.type.startsWith('image/')) {
+          showHUDSystemToast("Invalid File Stream", "SYS: Target file must be a valid image container.");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const base64Data = event.target.result;
+          if (textInput) textInput.value = base64Data;
+          if (preview) preview.src = base64Data;
+          if (previewContainer) previewContainer.style.display = 'flex';
+          showHUDSystemToast("Image Encoded", "SYS: Local file loaded and encoded. Frame is locked.");
+        };
+        reader.onerror = function() {
+          showHUDSystemToast("Internal Read Error", "SYS: Failed to read local stream.");
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function saveProfileDetails(event) {
+      event.preventDefault();
+      const n = document.getElementById('input-profile-name').value;
+      const s = document.getElementById('input-profile-subtitle').value;
+      const p = document.getElementById('input-profile-pic').value;
+      const st = document.getElementById('input-profile-status').value;
+
+      window.portfolioState.heroName = n;
+      window.portfolioState.heroSubtitle = s;
+      window.portfolioState.heroProfilePic = p;
+      window.portfolioState.heroStatus = st;
+
+      saveStateToLocalStorage();
+      initializePortfolioFromState();
+      closeFuturModal();
+      showHUDSystemToast("Profile Update Success", "SYS: Core identity matrix has been successfully rewrote.");
+    }
+
+    // 1.5 ABOUT ME EDITION MODAL
+    function openAboutEditModal() {
+      const p1 = window.portfolioState.aboutParagraph1 || '';
+      const p2 = window.portfolioState.aboutParagraph2 || '';
+      const quote = window.portfolioState.aboutQuote || '';
+      const html = `
+        <form id="form-edit-about" onsubmit="saveAboutDetails(event)">
+          <div class="futur-form-group">
+            <label class="futur-form-label">Bio Paragraph 1 (Required)</label>
+            <textarea id="input-about-p1" class="futur-form-input" required style="min-height: 80px; resize: vertical;">${p1.replace(/"/g, '&quot;')}</textarea>
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Bio Paragraph 2 (Optional / Extended Bio)</label>
+            <textarea id="input-about-p2" class="futur-form-input" style="min-height: 80px; resize: vertical;">${p2.replace(/"/g, '&quot;')}</textarea>
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Aesthetic Signature Quote</label>
+            <input type="text" id="input-about-quote" class="futur-form-input" required value="${quote.replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-actions">
+            <button type="button" class="futur-btn-secondary" onclick="closeFuturModal()">Cancel</button>
+            <button type="submit" class="futur-btn-primary"><i class="ph ph-floppy-disk"></i> Save Bio</button>
+          </div>
+        </form>
+      `;
+      openFuturModal("Bio overview & Profile Synthesis", html);
+    }
+
+    window.openAboutEditModal = openAboutEditModal;
+
+    window.saveAboutDetails = function(event) {
+      event.preventDefault();
+      const p1 = document.getElementById('input-about-p1').value;
+      const p2 = document.getElementById('input-about-p2').value;
+      const quote = document.getElementById('input-about-quote').value;
+
+      window.portfolioState.aboutParagraph1 = p1;
+      window.portfolioState.aboutParagraph2 = p2;
+      window.portfolioState.aboutQuote = quote;
+
+      saveStateToLocalStorage();
+      initializePortfolioFromState();
+      closeFuturModal();
+      showHUDSystemToast("Identity Matrix Rewritten", "SYS: Bio narratives and structural paradigms have been refreshed.");
+    };
+
+    // 1.8 PERSONAL CONNECT EDITION MODAL
+    function openConnectEditModal() {
+      const email = window.portfolioState.userContactEmail || 'bhanuatla521@gmail.com';
+      const phone = window.portfolioState.userContactNumber || '';
+      const html = `
+        <form id="form-edit-connect" onsubmit="saveConnectDetails(event)">
+          <div class="futur-form-group">
+            <label class="futur-form-label">Personal Email Address (Required)</label>
+            <input type="email" id="input-connect-email" class="futur-form-input" required value="${email.replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Personal Contact / Mobile Number (Optional - Clear to remove)</label>
+            <input type="text" id="input-connect-phone" class="futur-form-input" placeholder="e.g. +91 91001 23456" value="${phone.replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-actions">
+            <button type="button" class="futur-btn-secondary" onclick="closeFuturModal()">Cancel</button>
+            <button type="submit" class="futur-btn-primary"><i class="ph ph-floppy-disk"></i> Save Connect</button>
+          </div>
+        </form>
+      `;
+      openFuturModal("Personal Communications Node", html);
+    }
+
+    window.openConnectEditModal = openConnectEditModal;
+
+    window.saveConnectDetails = function(event) {
+      event.preventDefault();
+      const emailVal = document.getElementById('input-connect-email').value;
+      const phoneVal = document.getElementById('input-connect-phone').value;
+
+      window.portfolioState.userContactEmail = emailVal;
+      window.portfolioState.userContactNumber = phoneVal;
+
+      saveStateToLocalStorage();
+      initializePortfolioFromState();
+      closeFuturModal();
+      showHUDSystemToast("Connect Node Rewritten", "SYS: Personal communication channels have been synchronized.");
+    };
+
+    window.copyUserEmail = function() {
+      const emailAddress = window.portfolioState.userContactEmail || "bhanuatla521@gmail.com";
+      navigator.clipboard.writeText(emailAddress).then(() => {
+        showHUDSystemToast("Email Copied", `SYS: Copied ${emailAddress} to system buffer.`);
+      }).catch((err) => {
+        const cacheInput = document.createElement('input');
+        cacheInput.value = emailAddress;
+        document.body.appendChild(cacheInput);
+        cacheInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(cacheInput);
+        showHUDSystemToast("Email Copied (FB)", "SYS: Context replicated to local dashboard.");
+      });
+    };
+
+    window.copyUserPhone = function() {
+      const phoneNumber = window.portfolioState.userContactNumber || "";
+      if (!phoneNumber) return;
+      navigator.clipboard.writeText(phoneNumber).then(() => {
+        showHUDSystemToast("Phone Copied", `SYS: Copied ${phoneNumber} to system buffer.`);
+      }).catch((err) => {
+        const cacheInput = document.createElement('input');
+        cacheInput.value = phoneNumber;
+        document.body.appendChild(cacheInput);
+        cacheInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(cacheInput);
+        showHUDSystemToast("Phone Copied (FB)", "SYS: Phone digits replicated to local dashboard.");
+      });
+    };
+
+    // 2. TELEMETRY & CLOCK EDITION MODAL
+    function openTelemetryEditModal() {
+      const isPreselectedVal = [5.5, 0, -5, -8, 1, 9].includes(window.portfolioState.clockOffset);
+      const html = `
+        <form id="form-edit-telemetry" onsubmit="saveTelemetryDetails(event)">
+          <div class="futur-form-group">
+            <label class="futur-form-label">College Name</label>
+            <input type="text" id="input-college-name" class="futur-form-input" required value="${(window.portfolioState.collegeName || '').replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">College Accreditation / Status</label>
+            <input type="text" id="input-college-status" class="futur-form-input" required value="${(window.portfolioState.collegeStatus || '').replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Department / Branch</label>
+            <input type="text" id="input-college-dept" class="futur-form-input" required value="${(window.portfolioState.collegeDept || '').replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Contact / Mobile Number (Optional - Clear to remove)</label>
+            <input type="text" id="input-college-contact" class="futur-form-input" placeholder="e.g. +91 910 012 3456" value="${(window.portfolioState.collegeContact || '').replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Email Address (Optional - Clear to remove)</label>
+            <input type="email" id="input-college-email" class="futur-form-input" placeholder="e.g. info@aurora.edu.in" value="${(window.portfolioState.collegeEmail || '').replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="futur-form-group">
+              <label class="futur-form-label">Primary Campus Location</label>
+              <input type="text" id="input-primary-campus" class="futur-form-input" required value="${(window.portfolioState.primaryCampus || '').replace(/"/g, '&quot;')}">
+            </div>
+            <div class="futur-form-group">
+              <label class="futur-form-label">Specific Setting Details</label>
+              <input type="text" id="input-specific-setting" class="futur-form-input" required value="${(window.portfolioState.specificSetting || '').replace(/"/g, '&quot;')}">
+            </div>
+          </div>
+          <div class="futur-form-group" style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;">
+            <label class="futur-form-label">Clock Widget Display Name</label>
+            <input type="text" id="input-clock-title" class="futur-form-input" required value="${window.portfolioState.clockTitle.replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Clock Timezone / UTC Offset</label>
+            <select id="input-clock-offset" class="futur-form-input" onchange="toggleCustomClockOffsetField(this.value)">
+              <option value="5.5" ${window.portfolioState.clockOffset == 5.5 ? 'selected' : ''}>Indian Standard Time (IST, UTC+5:30)</option>
+              <option value="0" ${window.portfolioState.clockOffset == 0 ? 'selected' : ''}>Greenwich Mean Time (GMT/UTC+0:00)</option>
+              <option value="-5" ${window.portfolioState.clockOffset == -5 ? 'selected' : ''}>Eastern Standard Time (EST, UTC-5:00)</option>
+              <option value="-8" ${window.portfolioState.clockOffset == -8 ? 'selected' : ''}>Pacific Standard Time (PST, UTC-8:00)</option>
+              <option value="1" ${window.portfolioState.clockOffset == 1 ? 'selected' : ''}>Central European Time (CET, UTC+1:00)</option>
+              <option value="9" ${window.portfolioState.clockOffset == 9 ? 'selected' : ''}>Japan Standard Time (JST, UTC+9:00)</option>
+              <option value="custom" ${!isPreselectedVal ? 'selected' : ''}>Custom Offset...</option>
+            </select>
+          </div>
+          <div class="futur-form-group" id="custom-offset-container" style="display: ${!isPreselectedVal ? 'block' : 'none'}">
+            <label class="futur-form-label">Custom UTC Offset (Hours, e.g. -3.5 or 8.25)</label>
+            <input type="number" id="input-clock-offset-custom" class="futur-form-input" step="0.25" min="-12" max="14" value="${window.portfolioState.clockOffset}">
+          </div>
+          <div class="futur-form-actions">
+            <button type="button" class="futur-btn-secondary" onclick="closeFuturModal()">Cancel</button>
+            <button type="submit" class="futur-btn-primary"><i class="ph ph-floppy-disk"></i> Save Configuration</button>
+          </div>
+        </form>
+      `;
+      openFuturModal("Telemetry & Clock Config Panel", html);
+    }
+
+    window.toggleCustomClockOffsetField = function(val) {
+      const customContainer = document.getElementById('custom-offset-container');
+      if (customContainer) {
+        customContainer.style.display = (val === 'custom') ? 'block' : 'none';
+      }
+    };
+
+    window.saveTelemetryDetails = function(event) {
+      event.preventDefault();
+      
+      const cName = document.getElementById('input-college-name').value;
+      const cStatus = document.getElementById('input-college-status').value;
+      const cDept = document.getElementById('input-college-dept').value;
+      const cContact = document.getElementById('input-college-contact').value;
+      const cEmail = document.getElementById('input-college-email').value;
+      const pCampus = document.getElementById('input-primary-campus').value;
+      const sSetting = document.getElementById('input-specific-setting').value;
+      
+      const ct = document.getElementById('input-clock-title').value;
+
+      window.portfolioState.collegeName = cName;
+      window.portfolioState.collegeStatus = cStatus;
+      window.portfolioState.collegeDept = cDept;
+      window.portfolioState.collegeContact = cContact;
+      window.portfolioState.collegeEmail = cEmail;
+      window.portfolioState.primaryCampus = pCampus;
+      window.portfolioState.specificSetting = sSetting;
+
+      // Keep legacy values synchronized so nothing else breaks
+      window.portfolioState.locationTitle1 = "Primary Campus: " + pCampus.split(',')[0];
+      window.portfolioState.locationCoords1 = pCampus;
+      window.portfolioState.locationTitle2 = "Specific Setting: " + sSetting.split(',')[0];
+      window.portfolioState.locationCoords2 = sSetting;
+      
+      window.portfolioState.clockTitle = ct;
+
+      const offsetSelectVal = document.getElementById('input-clock-offset').value;
+      if (offsetSelectVal === 'custom') {
+        window.portfolioState.clockOffset = parseFloat(document.getElementById('input-clock-offset-custom').value) || 0;
+      } else {
+        window.portfolioState.clockOffset = parseFloat(offsetSelectVal);
+      }
+
+      saveStateToLocalStorage();
+      initializePortfolioFromState();
+      closeFuturModal();
+      showHUDSystemToast("Telemetry Rewritten", "SYS: Target academic nodes and location coordinates have been refreshed.");
+    };
+
+    // 3. PROJECT ADDITION MODAL
+    function openAddProjectModal() {
+      const html = `
+        <form id="form-add-project" onsubmit="saveNewProjectDetails(event)">
+          <div class="futur-form-group">
+            <label class="futur-form-label">Project Title</label>
+            <input type="text" id="input-proj-title" class="futur-form-input" required placeholder="e.g. Neural Link Core">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Description</label>
+            <textarea id="input-proj-desc" class="futur-form-input" required placeholder="Describe your workspace deployment..." style="min-height: 80px; resize: vertical;"></textarea>
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Technologies / Badges (Comma-separated)</label>
+            <input type="text" id="input-proj-tags" class="futur-form-input" required placeholder="e.g. PyTorch, CUDA, React">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Deployment or Code Link (Optional)</label>
+            <input type="url" id="input-proj-link" class="futur-form-input" placeholder="https://github.com/...">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">Select Visual Symbol Icon</label>
+            <select id="input-proj-icon" class="futur-form-input">
+              <option value="ph-code-simple">Code Block (ph-code-simple)</option>
+              <option value="ph-cpu">Microchip CPU (ph-cpu)</option>
+              <option value="ph-kanban">Kanban Board (ph-kanban)</option>
+              <option value="ph-database">Database Node (ph-database)</option>
+              <option value="ph-chart-bar">Analytics Map (ph-chart-bar)</option>
+              <option value="ph-game-controller">Game Loop (ph-game-controller)</option>
+              <option value="ph-cube">3D Cube (ph-cube)</option>
+            </select>
+          </div>
+          <div class="futur-form-actions">
+            <button type="button" class="futur-btn-secondary" onclick="closeFuturModal()">Cancel</button>
+            <button type="submit" class="futur-btn-primary"><i class="ph ph-plus-circle"></i> Deploy Project</button>
+          </div>
+        </form>
+      `;
+      openFuturModal("Deploy Custom Project Model", html);
+    }
+
+    window.saveNewProjectDetails = function(event) {
+      event.preventDefault();
+      const title = document.getElementById('input-proj-title').value;
+      const desc = document.getElementById('input-proj-desc').value;
+      const tagsStr = document.getElementById('input-proj-tags').value;
+      const link = document.getElementById('input-proj-link').value;
+      const icon = document.getElementById('input-proj-icon').value;
+
+      const tags = tagsStr.split(',').map(tag => tag.trim()).filter(Boolean);
+
+      const newProject = {
+        id: 'custom-' + Date.now(),
+        title,
+        desc,
+        tags,
+        link,
+        icon,
+        iconColor: "var(--accent-cyan)",
+        isCustom: true
+      };
+
+      window.portfolioState.projects.push(newProject);
+      saveStateToLocalStorage();
+      renderCustomProjects();
+      closeFuturModal();
+      showHUDSystemToast("Project Added", `SYS: Custom node "${title}" has been appended to the project matrix.`);
+    };
+
+    function renderCustomProjects() {
+      // Clean previously rendered dynamic projects
+      document.querySelectorAll('.dynamic-proj-item').forEach(el => el.remove());
+      
+      const projectsGrid = document.querySelector('.projects-grid');
+      if (!projectsGrid) return;
+
+      const customProjects = window.portfolioState.projects ? window.portfolioState.projects.filter(p => p.isCustom) : [];
+      
+      customProjects.forEach(proj => {
+        const projDiv = document.createElement('div');
+        projDiv.className = 'proj-item dynamic-proj-item';
+        
+        let badgeHTML = '';
+        proj.tags.forEach((tag, idx) => {
+          const isAltColor = idx % 2 === 1;
+          badgeHTML += `<span class="proj-tech-badge ${isAltColor ? 'violet' : ''}">${tag}</span>`;
+        });
+        
+        let footerSectionHTML = '';
+        if (proj.link) {
+          footerSectionHTML = `
+            <a href="${proj.link}" target="_blank" class="proj-footer-link" style="margin-top: 1.5rem;">
+              <span>View Deployment</span>
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+          `;
+        }
+
+        projDiv.innerHTML = `
+          <div>
+            <div class="proj-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <div class="proj-tech-badges" style="margin-right: 12px; flex-wrap: wrap; display: flex; gap: 4px;">
+                ${badgeHTML}
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="ph ${proj.icon}" style="font-size: 1.4rem; color: ${proj.iconColor};"></i>
+                <button class="delete-proj-btn" title="Delete custom node project" onclick="deleteCustomProject('${proj.id}', event)">
+                  <i class="ph ph-trash"></i>
+                </button>
+              </div>
+            </div>
+            <h3 class="proj-title" style="margin-top: 12px;">${proj.title}</h3>
+            <p class="proj-desc">${proj.desc}</p>
+          </div>
+          ${footerSectionHTML}
+        `;
+        
+        projectsGrid.appendChild(projDiv);
+      });
+    }
+
+    window.deleteCustomProject = function(id, event) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      
+      window.portfolioState.projects = window.portfolioState.projects.filter(p => p.id !== id);
+      saveStateToLocalStorage();
+      renderCustomProjects();
+      showHUDSystemToast("Project Removed", "SYS: custom node deployment recycled.");
+    };
+
+    // Export variables to window namespace for inline event triggering
+    window.openProfileEditModal = openProfileEditModal;
+    window.saveProfileDetails = saveProfileDetails;
+    window.openTelemetryEditModal = openTelemetryEditModal;
+    window.openAddProjectModal = openAddProjectModal;
+    window.closeFuturModal = closeFuturModal;
+    window.switchSafepayTab = switchSafepayTab;
+    window.executeUPIPayment = executeUPIPayment;
+    window.handleCalcSimKey = handleCalcSimKey;
+    window.saveTelemetryDetails = saveTelemetryDetails;
+    window.saveNewProjectDetails = saveNewProjectDetails;
+    window.adjustParentalLimit = adjustParentalLimit;
+
+    // Trigger loaded skill animations automatically inside viewport
+    window.addEventListener('load', () => {
+      initializePortfolioFromState();
+      
+      // Perform staggered reveal animation using high-performance motion
+      animate(
+        ".bento-card",
+        {
+          opacity: [0, 1],
+          y: [40, 0],
+          scale: [0.96, 1]
+        },
+        {
+          delay: stagger(0.12, { startDelay: 0.1 }),
+          duration: 0.85,
+          ease: [0.16, 1, 0.3, 1] // Premium ultra-smooth cubic-bezier curve
+        }
+      ).then(() => {
+        // Clear inline styles once animation is complete, allowing CSS hover transitions to work cleanly and responsively
+        document.querySelectorAll(".bento-card").forEach(card => {
+          card.style.opacity = "";
+          card.style.transform = "";
+        });
+      });
+
+      document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        const val = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+          bar.style.width = val;
+        }, 400);
+      });
+      renderSafepayHistory();
+      showHUDSystemToast("Welcome Bhanu", "DATA PORTAL LOADED // Grid specifications online.");
+    });
+  </script>
+</body>
+</html>
