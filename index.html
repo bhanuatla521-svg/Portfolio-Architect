@@ -2990,7 +2990,7 @@
     const defaultState = {
       heroName: "A.V. Bhanu Prakash Reddy",
       heroSubtitle: "Computer Science Engineering (Data Science) & Developer",
-      heroProfilePic: BHANU_VECTOR_AVATAR,
+      heroProfilePic: BHANU_VECTOR_AVATAR, // <-- REPLACE THE VALUE HERE!
       heroStatus: "1st Year CSE",
       
       aboutParagraph1: "First-year CSE undergraduate specializing in Data Science at Aurora Deemed University.",
@@ -3019,7 +3019,7 @@
     };
 
     // Load from local storage
-    const savedStateStr = localStorage.getItem('bhanu_portfolio_state_v2');
+    const savedStateStr = localStorage.getItem('bhanu_portfolio_state_v3');
     if (savedStateStr) {
       try {
         window.portfolioState = JSON.parse(savedStateStr);
@@ -3073,7 +3073,7 @@
     }
 
     function saveStateToLocalStorage() {
-      localStorage.setItem('bhanu_portfolio_state_v2', JSON.stringify(window.portfolioState));
+      localStorage.setItem('bhanu_portfolio_state_v3', JSON.stringify(window.portfolioState));
     }
 
     // Initialize all DOM elements using storage values on page load
