@@ -2324,7 +2324,7 @@
        JAVASCRIPT DYNAMIC INTERACTIONS ENGINE
        ------------------------------------------------------------- -->
   <script type="module">
-    import { animate, stagger } from "motion";
+    import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
 
     // Immediately hide bento cards dynamically to prevent layout flashing before animation starts
     document.querySelectorAll('.bento-card').forEach(card => {
@@ -2974,7 +2974,7 @@
     const defaultState = {
       heroName: "A.V. Bhanu Prakash Reddy",
       heroSubtitle: "Computer Science Engineering (Data Science) & Developer",
-      heroProfilePic: BHANU_VECTOR_AVATAR, // <-- REPLACE THE VALUE HERE!
+      heroProfilePic: "./bhanu_pic.jpg",
       heroStatus: "1st Year CSE",
       
       aboutParagraph1: "First-year CSE undergraduate specializing in Data Science at Aurora Deemed University.",
@@ -3003,7 +3003,7 @@
     };
 
     // Load from local storage
-    const savedStateStr = localStorage.getItem('bhanu_portfolio_state_v3');
+    const savedStateStr = localStorage.getItem('bhanu_portfolio_state_v4');
     if (savedStateStr) {
       try {
         window.portfolioState = JSON.parse(savedStateStr);
@@ -3020,8 +3020,8 @@
 
     // Auto-upgrade legacy Unsplash placeholder
     const legacyPicUrl = "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80";
-    if (!window.portfolioState.heroProfilePic || window.portfolioState.heroProfilePic === legacyPicUrl) {
-      window.portfolioState.heroProfilePic = BHANU_VECTOR_AVATAR;
+    if (!window.portfolioState.heroProfilePic || window.portfolioState.heroProfilePic === legacyPicUrl || window.portfolioState.heroProfilePic === BHANU_VECTOR_AVATAR) {
+      window.portfolioState.heroProfilePic = "./bhanu_pic.jpg";
     }
 
     // Auto-update to Aurora-specific college & location telemetry
@@ -3057,7 +3057,7 @@
     }
 
     function saveStateToLocalStorage() {
-      localStorage.setItem('bhanu_portfolio_state_v3', JSON.stringify(window.portfolioState));
+      localStorage.setItem('bhanu_portfolio_state_v4', JSON.stringify(window.portfolioState));
     }
 
     // Initialize all DOM elements using storage values on page load
