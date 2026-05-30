@@ -1,20 +1,41 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# A.V. Bhanu Prakash Reddy | Cyber-Minimalist Bento Portfolio
 
-# Run and deploy your AI Studio app
+### 🛠️ SYSTEM STATUS: ACTIVE // LIVE
 
-This contains everything you need to run your app locally.
+Welcome to the repository for my personal developer portfolio. Built using a sleek, cyber-minimalist bento grid layout, this application functions as a live telemetry center showcasing my engineering background, technical toolkit, curated software deployments, and active automated workflows.
 
-View your app in AI Studio: https://ai.studio/apps/e65c6b91-22a0-4d6b-935f-8ac4bc5d9f3f
+---
 
-## Run Locally
+## 🚀 Tech Stack & Linear Kernels
 
-**Prerequisites:**  Node.js
+* **Frontend Core:** React.js, HTML5, CSS3 (Custom Cyber-Aesthetic Variables)
+* **Styling Engine:** Tailwind CSS
+* **Programming & Data:** Python, SQL Database
+* **AI & Automation:** n8n Automation, Google AI Studio, GitHub Copilot
+* **Build Tool & Bundler:** Vite
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🎛️ Key Features & Portfolio Architecture
+
+### 1. Personalized Communications Port (Connect Grid)
+* **Direct Mailing Node:** Optimized safe URL integration that seamlessly hooks into Google Mail (`https://mail.google.com/mail/...`) allowing visitors to fire up an instant composition window.
+* **Clean Sidebar Layout:** Displays university coordinates and verified contact channels dynamically.
+
+### 2. Curated Deployments & Functional Mockups
+* **SafePay (Student UPI App):** Simulates a student transaction framework featuring a dynamic wallet component, local spending cap verification limits, a campus cafeteria transaction log stack, and mock parental GPS coordination flags.
+* **Advanced Calculator Engine:** An algorithmic mathematical parsing state machine handling standard arithmetic and fluid operational transitions.
+
+---
+
+## 🛠️ Local Setup & Configuration
+
+To run this portfolio locally or customize its state, follow these protocols:
+
+### Prerequisites
+Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git)
