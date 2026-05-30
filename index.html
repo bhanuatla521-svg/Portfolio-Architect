@@ -2263,23 +2263,56 @@
         <div class="card-spotlight"></div>
         <div class="card-content">
           <div>
-            <div class="card-label">
-              <i class="ph ph-paper-plane-tilt"></i>
-              <span>Communications Port // Connect Grid</span>
+            <div class="card-label" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="ph ph-paper-plane-tilt"></i>
+                <span>Communications Port // Connect Grid</span>
+              </div>
+              <button id="btn-edit-connect" class="action-btn-pill" onclick="openConnectEditModal()"><i class="ph ph-pencil-simple"></i> Edit Connect</button>
             </div>
             
             <p class="connect-text">
               Reach out directly to establish secure operations. Open to collaborative ventures in Frontend Development, AI automation workflows, and Data Pipelines.
             </p>
 
-            <!-- Personal Email Block -->
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <label style="font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Direct mailing node</label>
-              <div class="copy-email-block" style="margin: 0; padding: 0.65rem 0.85rem;">
-                <span class="email-display-text" id="user-email-text" style="font-size: 0.8rem;">bhanuatla521@gmail.com</span>
-                <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 0.75rem;">
+              <!-- Personal Email Block -->
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <label style="font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Direct mailing node</label>
+                <div class="copy-email-block" style="margin: 0; padding: 0.5rem 0.75rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.01); border: 1px solid var(--border-subtle); border-radius: 8px;">
+                  <span class="email-display-text" id="user-email-text" style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-primary);">bhanuatla521@gmail.com</span>
                   <a id="link-direct-email" href="https://mail.google.com/mail/?view=cm&fs=1&to=bhanuatla521@gmail.com" target="_blank" rel="noopener noreferrer" class="action-btn-pill" style="padding: 2px 8px; font-size: 0.62rem; text-decoration: none; border-color: rgba(0, 240, 255, 0.3); color: var(--accent-cyan); background: rgba(0, 240, 255, 0.08); flex-shrink: 0;">
                     <i class="ph ph-paper-plane-tilt"></i> Gmail
+                  </a>
+                </div>
+              </div>
+
+              <!-- Phone Block -->
+              <div id="personal-phone-block" style="display: flex; flex-direction: column; gap: 4px;">
+                <label style="font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Secure Voice Node</label>
+                <div class="copy-email-block" style="margin: 0; padding: 0.5rem 0.75rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.01); border: 1px solid var(--border-subtle); border-radius: 8px;">
+                  <span class="email-display-text" id="display-user-phone" style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-primary);">+91 6305858102</span>
+                  <a id="link-direct-call" href="tel:+916305858102" class="action-btn-pill" style="padding: 2px 8px; font-size: 0.62rem; text-decoration: none; border-color: rgba(0, 240, 255, 0.3); color: var(--accent-cyan); background: rgba(0, 240, 255, 0.08); flex-shrink: 0;">
+                    <i class="ph ph-phone"></i> Call
+                  </a>
+                </div>
+              </div>
+
+              <!-- LinkedIn & GitHub Row -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <!-- LinkedIn Block -->
+                <div id="personal-linkedin-block" style="display: flex; flex-direction: column; gap: 4px;">
+                  <label style="font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Professional Node</label>
+                  <a id="link-user-linkedin" href="https://www.linkedin.com/in/bhanu-atla-32b696388/" target="_blank" rel="noopener noreferrer" class="action-btn-pill" style="justify-content: center; width: 100%; text-decoration: none; padding: 8px 12px; font-size: 0.7rem; border-color: rgba(188, 0, 221, 0.3); color: var(--accent-violet); background: rgba(188, 0, 221, 0.05);">
+                    <i class="ph ph-linkedin-logo"></i> LinkedIn
+                  </a>
+                </div>
+                
+                <!-- GitHub Block -->
+                <div id="personal-github-block" style="display: flex; flex-direction: column; gap: 4px;">
+                  <label style="font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Code Repository</label>
+                  <a id="link-user-github" href="https://github.com/settings/profile" target="_blank" rel="noopener noreferrer" class="action-btn-pill" style="justify-content: center; width: 100%; text-decoration: none; padding: 8px 12px; font-size: 0.7rem; border-color: rgba(0, 240, 255, 0.3); color: var(--accent-cyan); background: rgba(0, 240, 255, 0.08);">
+                    <i class="ph ph-github-logo"></i> GitHub
                   </a>
                 </div>
               </div>
@@ -2996,14 +3029,16 @@
       clockTitle: "Aurora Clock (IST)",
       clockOffset: 5.5,
       
-      userContactNumber: "+91 91001 23456",
+      userContactNumber: "+91 6305858102",
       userContactEmail: "bhanuatla521@gmail.com",
+      userLinkedIn: "https://www.linkedin.com/in/bhanu-atla-32b696388/",
+      userGitHub: "https://github.com/settings/profile",
 
       projects: []
     };
 
     // Load from local storage
-    const savedStateStr = localStorage.getItem('bhanu_portfolio_state_v4');
+    const savedStateStr = localStorage.getItem('bhanu_portfolio_state_v5');
     if (savedStateStr) {
       try {
         window.portfolioState = JSON.parse(savedStateStr);
@@ -3055,9 +3090,15 @@
     if (window.portfolioState.userContactEmail === undefined) {
       window.portfolioState.userContactEmail = defaultState.userContactEmail;
     }
+    if (window.portfolioState.userLinkedIn === undefined) {
+      window.portfolioState.userLinkedIn = defaultState.userLinkedIn;
+    }
+    if (window.portfolioState.userGitHub === undefined) {
+      window.portfolioState.userGitHub = defaultState.userGitHub;
+    }
 
     function saveStateToLocalStorage() {
-      localStorage.setItem('bhanu_portfolio_state_v4', JSON.stringify(window.portfolioState));
+      localStorage.setItem('bhanu_portfolio_state_v5', JSON.stringify(window.portfolioState));
     }
 
     // Initialize all DOM elements using storage values on page load
@@ -3173,9 +3214,16 @@
       const linkEmailDirect = document.getElementById('link-direct-email');
       const linkDirectMailto = document.getElementById('direct-mailto-action-btn');
       const personalPhoneBlock = document.getElementById('personal-phone-block');
+      
+      const linkLinkedIn = document.getElementById('link-user-linkedin');
+      const linkGitHub = document.getElementById('link-user-github');
+      const linkedinBlock = document.getElementById('personal-linkedin-block');
+      const githubBlock = document.getElementById('personal-github-block');
 
       const contactEmail = window.portfolioState.userContactEmail || "bhanuatla521@gmail.com";
-      const contactPhone = window.portfolioState.userContactNumber !== undefined ? window.portfolioState.userContactNumber : "+91 91001 23456";
+      const contactPhone = window.portfolioState.userContactNumber !== undefined ? window.portfolioState.userContactNumber : "+91 6305858102";
+      const contactLinkedIn = window.portfolioState.userLinkedIn !== undefined ? window.portfolioState.userLinkedIn : "https://www.linkedin.com/in/bhanu-atla-32b696388/";
+      const contactGitHub = window.portfolioState.userGitHub !== undefined ? window.portfolioState.userGitHub : "https://github.com/settings/profile";
 
       if (userEmailText) userEmailText.textContent = contactEmail;
       if (linkEmailDirect) {
@@ -3195,6 +3243,24 @@
           }
         } else {
           if (personalPhoneBlock) personalPhoneBlock.style.display = 'none';
+        }
+      }
+
+      if (linkLinkedIn) {
+        if (contactLinkedIn && contactLinkedIn.trim() !== '') {
+          linkLinkedIn.setAttribute('href', contactLinkedIn);
+          if (linkedinBlock) linkedinBlock.style.display = 'flex';
+        } else {
+          if (linkedinBlock) linkedinBlock.style.display = 'none';
+        }
+      }
+
+      if (linkGitHub) {
+        if (contactGitHub && contactGitHub.trim() !== '') {
+          linkGitHub.setAttribute('href', contactGitHub);
+          if (githubBlock) githubBlock.style.display = 'flex';
+        } else {
+          if (githubBlock) githubBlock.style.display = 'none';
         }
       }
 
@@ -3439,6 +3505,8 @@
     function openConnectEditModal() {
       const email = window.portfolioState.userContactEmail || 'bhanuatla521@gmail.com';
       const phone = window.portfolioState.userContactNumber || '';
+      const linkedin = window.portfolioState.userLinkedIn || 'https://www.linkedin.com/in/bhanu-atla-32b696388/';
+      const github = window.portfolioState.userGitHub || 'https://github.com/settings/profile';
       const html = `
         <form id="form-edit-connect" onsubmit="saveConnectDetails(event)">
           <div class="futur-form-group">
@@ -3447,7 +3515,15 @@
           </div>
           <div class="futur-form-group">
             <label class="futur-form-label">Personal Contact / Mobile Number (Optional - Clear to remove)</label>
-            <input type="text" id="input-connect-phone" class="futur-form-input" placeholder="e.g. +91 91001 23456" value="${phone.replace(/"/g, '&quot;')}">
+            <input type="text" id="input-connect-phone" class="futur-form-input" placeholder="e.g. +91 6305858102" value="${phone.replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">LinkedIn Profile URL (Optional - Clear to remove)</label>
+            <input type="url" id="input-connect-linkedin" class="futur-form-input" placeholder="e.g. https://www.linkedin.com/in/..." value="${linkedin.replace(/"/g, '&quot;')}">
+          </div>
+          <div class="futur-form-group">
+            <label class="futur-form-label">GitHub Profile URL (Optional - Clear to remove)</label>
+            <input type="url" id="input-connect-github" class="futur-form-input" placeholder="e.g. https://github.com/..." value="${github.replace(/"/g, '&quot;')}">
           </div>
           <div class="futur-form-actions">
             <button type="button" class="futur-btn-secondary" onclick="closeFuturModal()">Cancel</button>
@@ -3464,9 +3540,13 @@
       event.preventDefault();
       const emailVal = document.getElementById('input-connect-email').value;
       const phoneVal = document.getElementById('input-connect-phone').value;
+      const linkedinVal = document.getElementById('input-connect-linkedin').value;
+      const githubVal = document.getElementById('input-connect-github').value;
 
       window.portfolioState.userContactEmail = emailVal;
       window.portfolioState.userContactNumber = phoneVal;
+      window.portfolioState.userLinkedIn = linkedinVal;
+      window.portfolioState.userGitHub = githubVal;
 
       saveStateToLocalStorage();
       initializePortfolioFromState();
