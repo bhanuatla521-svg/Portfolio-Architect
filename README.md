@@ -1,4 +1,4 @@
-# A.V. Bhanu Prakash Reddy | Cyber-Minimalist Bento Portfolio
+# A.V. Bhanu Prakash Reddy |  Portfolio
 
 ### 🛠️ SYSTEM STATUS: ACTIVE // LIVE
 
